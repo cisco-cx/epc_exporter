@@ -1,0 +1,80 @@
+Monday July 22 14:17:39 JST 2019
+Counters for port 1/1:
+Line Card  Virtual Ethernet Port
+Rx Counter                        Data  |  Tx Counter                       Data
+-----------------------  -------------- + -----------------------  -------------
+RX Unicast frames               5110225 | TX Unicast frames              3300068
+RX Multicast frames                   0 | TX Multicast frames                n/a
+RX Broadcast frames                 n/a | TX Broadcast frames                n/a
+RX Size   64 frames                 n/a | TX Size   64 frames                n/a
+RX Size   65 ..  127 fr             n/a | TX Size   65 ..  127 fr            n/a
+RX Size  128 ..  255 fr             n/a | TX Size  128 ..  255 fr            n/a
+RX Size  256 ..  511 fr             n/a | TX Size  256 ..  511 fr            n/a
+RX Size  512 .. 1023 fr             n/a | TX Size  512 .. 1023 fr            n/a
+RX Size 1024 .. 1522 fr             n/a | TX Size 1024 .. 1522 fr            n/a
+RX Size > 1522 frames               n/a | TX Size > 1522 frames              n/a
+RX Bytes OK                   556374658 | TX Bytes OK                 1384486129
+RX Bytes BAD                        n/a | TX Bytes BAD                       n/a
+RX SHORT OK                         n/a | TX PAUSE                           n/a
+RX SHORT CRC                        n/a | TX ERR                               0
+RX OVF                                0 |
+RX NORM CRC                           0 |
+RX LONG OK                          n/a |
+RX LONG CRC                         n/a |
+RX PAUSE                            n/a |
+RX FALS CRS                         n/a |
+RX SYM ERR                          n/a |
+-----------------------  -------------- + -----------------------  -------------
+Counters for port 1/10:
+Line Card  Virtual Ethernet Port
+Rx Counter                        Data  |  Tx Counter                       Data
+-----------------------  -------------- + -----------------------  -------------
+RX Unicast frames            3266876167 | TX Unicast frames           2110037521
+RX Multicast frames                 n/a | TX Multicast frames                n/a
+RX Broadcast frames                 n/a | TX Broadcast frames                n/a
+RX Size   64 frames                 n/a | TX Size   64 frames                n/a
+RX Size   65 ..  127 fr             n/a | TX Size   65 ..  127 fr            n/a
+RX Size  128 ..  255 fr             n/a | TX Size  128 ..  255 fr            n/a
+RX Size  256 ..  511 fr             n/a | TX Size  256 ..  511 fr            n/a
+RX Size  512 .. 1023 fr             n/a | TX Size  512 .. 1023 fr            n/a
+RX Size 1024 .. 1522 fr             n/a | TX Size 1024 .. 1522 fr            n/a
+RX Size > 1522 frames               n/a | TX Size > 1522 frames              n/a
+RX Bytes OK               2449118758515 | TX Bytes OK              1582487981327
+RX Bytes BAD                        n/a | TX Bytes BAD                       n/a
+RX SHORT OK                         n/a | TX PAUSE                           n/a
+RX SHORT CRC                        n/a | TX ERR                               2
+RX OVF                                0 |
+RX NORM CRC                         n/a |
+RX LONG OK                          n/a |
+RX LONG CRC                         n/a |
+RX PAUSE                            n/a |
+RX FALS CRS                         n/a |
+RX SYM ERR                          n/a |
+-----------------------  -------------- + -----------------------  -------------
+Counters for port 1/11:
+Line Card  Virtual Ethernet Port
+Rx Counter                        Data  |  Tx Counter                       Data
+-----------------------  -------------- + -----------------------  -------------
+RX Unicast frames            1510930555 | TX Unicast frames            935376456
+RX Multicast frames                 n/a | TX Multicast frames                n/a
+RX Broadcast frames                 n/a | TX Broadcast frames                n/a
+RX Size   64 frames                 n/a | TX Size   64 frames                n/a
+RX Size   65 ..  127 fr             n/a | TX Size   65 ..  127 fr            n/a
+RX Size  128 ..  255 fr             n/a | TX Size  128 ..  255 fr            n/a
+RX Size  256 ..  511 fr             n/a | TX Size  256 ..  511 fr            n/a
+RX Size  512 .. 1023 fr             n/a | TX Size  512 .. 1023 fr            n/a
+RX Size 1024 .. 1522 fr             n/a | TX Size 1024 .. 1522 fr            n/a
+RX Size > 1522 frames               n/a | TX Size > 1522 frames              n/a
+RX Bytes OK                313408466324 | TX Bytes OK              1039750167741
+RX Bytes BAD                        n/a | TX Bytes BAD                       n/a
+RX SHORT OK                         n/a | TX PAUSE                           n/a
+RX SHORT CRC                        n/a | TX ERR                               0
+RX OVF                                0 |
+RX NORM CRC                         n/a |
+RX LONG OK                          n/a |
+RX LONG CRC                         n/a |
+RX PAUSE                            n/a |
+RX FALS CRS                         n/a |
+RX SYM ERR                          n/a |
+-----------------------  -------------- + -----------------------  -------------
+

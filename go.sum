@@ -1,0 +1,12 @@
+github.com/TobiEiss/go-textfsm v0.0.0-20190710064052-032be7312a18 h1:twesrHlaoUQOtF9obKS1DcI7TNTw3iF7/wkswbt4phE=
+github.com/TobiEiss/go-textfsm v0.0.0-20190710064052-032be7312a18/go.mod h1:1+dc/z43NXuqq1hFUTzvje5OYfqiWq++ae/oUcTmloM=
+github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
+github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/neermitt/go-textfsm v0.0.0-20190723175344-620873a131c4 h1:UV/JIb8jYfTK1ph/GVe8cBRsvj3p0ywV0iGIVFbof50=
+github.com/neermitt/go-textfsm v0.0.0-20190723175344-620873a131c4/go.mod h1:rhtD8HP5M7CxsjFb/QrGn1CaH/KHDV4sG/9lr+A4s7c=
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/stretchr/objx v0.1.0 h1:4G4v2dO3VZwixGIRoQ5Lfboy6nUhCyYzaqnIAPPhYs4=
+github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
+github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=

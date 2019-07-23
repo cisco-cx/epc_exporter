@@ -1,0 +1,7 @@
+Value NPU  (\d+/\d+/\d+)
+Value Now        (\d+)
+Value FiveMin    (\d+)
+Value FifteenMin (\d+)
+
+Start
+  ^\w${NPU} \s+ ${Now}% \s+ ${FiveMin}% \s+ ${FifteenMin}.* -> Record

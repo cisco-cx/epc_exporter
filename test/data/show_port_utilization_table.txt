@@ -1,0 +1,9 @@
+Monday July 22 14:21:23 JST 2019
+                                ------ Average Port Utilization (in mbps) ------
+Port   Type                       Current           5min             15min
+                                 Rx      Tx      Rx       Tx       Rx     Tx
+----- ------------------------  ------- -------  ------- -------  ------- -------
+ 1/1  Virtual Ethernet          0       0        0       0        0       0
+ 1/10 Virtual Ethernet          9       4        10      4        10      5
+ 1/11 Virtual Ethernet          0       4        0       5        0       4
+

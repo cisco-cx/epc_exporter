@@ -1,0 +1,7 @@
+Value Port  (\d+/\d+)
+Value List RxCurrent   (\d+)
+Value List TxCurrent   (\d+)
+
+
+Start
+  ^${Port} .+ \s+ ${RxCurrent} \s+ ${TxCurrent} \s+ ${RxCurrent} \s+ ${TxCurrent} \s+ ${RxCurrent} \s+ ${TxCurrent} -> Record
