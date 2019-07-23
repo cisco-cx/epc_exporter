@@ -26,7 +26,7 @@ func TestParse(t *testing.T) {
 
 			record := make(chan []interface{})
 
-			err := parser.Parse("../templates/"+td.Template, "../test/data/"+td.Input, record)
+			err := parser.Parse("templates/"+td.Template, "test/data/"+td.Input, record)
 			assert.NoError(t, err)
 
 			// print to console
