@@ -6,7 +6,7 @@ require (
 	github.com/TobiEiss/go-textfsm v0.0.0-20190710064052-032be7312a18
 	github.com/prometheus/client_golang v1.0.0
 	github.com/prometheus/common v0.4.1
-	github.com/sirupsen/logrus v1.4.2 // indirect
+	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.3.0
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
