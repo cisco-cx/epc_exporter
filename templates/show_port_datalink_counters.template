@@ -1,8 +1,8 @@
 Value Filldown Port  (\d+/\d+)
-Value List RxName   (\w+.*\w+)
-Value List RxValue   (\d+|(n/a))
-Value List TxName   (\w+.*\w+)
-Value List TxValue   (\d+|(n/a))
+Value RxName   (\w+.*\w+)
+Value RxValue   (\d+|(n/a))
+Value TxName   (\w+.*\w+)
+Value TxValue   (\d+|(n/a))
 
 Start
   ^Counters for port ${Port}:
