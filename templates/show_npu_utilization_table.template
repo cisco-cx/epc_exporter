@@ -1,7 +1,8 @@
-Value NPU  (\d+/\d+/\d+)
-Value Now        (\d+)
-Value FiveMin    (\d+)
+Value NPU (\d+/\d+/\d+)
+Value Now (\d+)
+Value FiveMin (\d+)
 Value FifteenMin (\d+)
 
+# Allway starts in 'Start' state.
 Start
-  ^\w${NPU} \s+ ${Now}% \s+ ${FiveMin}% \s+ ${FifteenMin}.* -> Record
+  ^\s${NPU} \s+ ${Now}% \s+ ${FiveMin}% \s+ ${FifteenMin}% -> Record
