@@ -2,11 +2,13 @@ import textfsm
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
+from device import AbstractDevice
+
 
 class PortUtilizationCollector(object):
 
-    def __init__(self, template_dir: str, data_dir: str, registry=REGISTRY):
-        info = self._info(template_dir, data_dir)
+    def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
+        info = self._info(template_dir, device)
 
         self._metrics = [
             GaugeMetricFamily("epc_port_rx_1", "epc port rx 1m.", labels=["port"]),
@@ -31,12 +33,10 @@ class PortUtilizationCollector(object):
     def collect(self):
         return self._metrics
 
-    def _info(self, template_dir: str, data_dir: str):
+    def _info(self, template_dir: str, device: AbstractDevice):
         template = open(template_dir + "/show_port_utilization_table.template", "r")
 
         re_table = textfsm.TextFSM(template)
 
-        with open(data_dir + "/show_port_utilization_table.txt", 'r') as file:
-            cli_output = file.read()
-            data = re_table.ParseText(cli_output)
-        return data
+        output = device.exec("show port utilization table")
+        return re_table.ParseText(output)

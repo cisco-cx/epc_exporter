@@ -5,6 +5,7 @@ import time
 from prometheus_client import CollectorRegistry, write_to_textfile
 
 from collector import TestCollector, NPUUtilizationCollector, PortUtilizationCollector
+from device import TestDevice
 
 
 class GracefulKiller:
@@ -26,11 +27,13 @@ if __name__ == "__main__":
 
     killer = GracefulKiller()
 
+    device = TestDevice(test_data_path)
+
     while not killer.kill_now:
         registry = CollectorRegistry()
         TestCollector(registry)
-        NPUUtilizationCollector(templates_path, test_data_path, registry)
-        PortUtilizationCollector(templates_path, test_data_path, registry)
+        NPUUtilizationCollector(templates_path, device, registry)
+        PortUtilizationCollector(templates_path, device, registry)
         write_to_textfile(output_path, registry)
         for x in range(12):
             if not killer.kill_now:
