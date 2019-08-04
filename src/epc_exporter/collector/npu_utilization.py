@@ -4,8 +4,8 @@ from prometheus_client.metrics_core import GaugeMetricFamily
 
 
 class NPUUtilizationCollector(object):
-    def __init__(self, registry=REGISTRY):
-        info = self._info()
+    def __init__(self, template_dir: str, data_dir: str, registry=REGISTRY):
+        info = self._info(template_dir, data_dir)
         self._metrics = [
             GaugeMetricFamily("epc_npu_usage1", "epc npu 1m usage percent.", labels=["npu"]),
             GaugeMetricFamily("epc_npu_usage5", "epc npu 5m usage percent.", labels=["npu"]),
@@ -23,12 +23,12 @@ class NPUUtilizationCollector(object):
     def collect(self):
         return self._metrics
 
-    def _info(self):
-        template = open("templates/show_npu_utilization_table.template", "r")
+    def _info(self, template_dir: str, data_dir: str):
+        template = open(template_dir + "/show_npu_utilization_table.template", "r")
 
         re_table = textfsm.TextFSM(template)
 
-        with open("test/data/show_npu_utilization_table.txt", 'r') as file:
+        with open(data_dir + "/show_npu_utilization_table.txt", 'r') as file:
             cli_output = file.read()
             data = re_table.ParseText(cli_output)
         return data

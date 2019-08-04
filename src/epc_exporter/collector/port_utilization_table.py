@@ -5,8 +5,8 @@ from prometheus_client.metrics_core import GaugeMetricFamily
 
 class PortUtilizationCollector(object):
 
-    def __init__(self, registry=REGISTRY):
-        info = self._info()
+    def __init__(self, template_dir: str, data_dir: str, registry=REGISTRY):
+        info = self._info(template_dir, data_dir)
 
         self._metrics = [
             GaugeMetricFamily("epc_port_rx_1", "epc port rx 1m.", labels=["port"]),
@@ -31,12 +31,12 @@ class PortUtilizationCollector(object):
     def collect(self):
         return self._metrics
 
-    def _info(self):
-        template = open("templates/show_port_utilization_table.template", "r")
+    def _info(self, template_dir: str, data_dir: str):
+        template = open(template_dir + "/show_port_utilization_table.template", "r")
 
         re_table = textfsm.TextFSM(template)
 
-        with open("test/data/show_port_utilization_table.txt", 'r') as file:
+        with open(data_dir + "/show_port_utilization_table.txt", 'r') as file:
             cli_output = file.read()
             data = re_table.ParseText(cli_output)
         return data
