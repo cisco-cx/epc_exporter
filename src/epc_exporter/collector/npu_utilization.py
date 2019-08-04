@@ -9,15 +9,14 @@ class NPUUtilizationCollector(object):
     def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
         info = self._info(template_dir, device)
         self._metrics = [
-            GaugeMetricFamily("epc_npu_usage1", "epc npu 1m usage percent.", labels=["npu"]),
-            GaugeMetricFamily("epc_npu_usage5", "epc npu 5m usage percent.", labels=["npu"]),
-            GaugeMetricFamily("epc_npu_usage15", "epc npu 15m usage percent.", labels=["npu"])
+            GaugeMetricFamily("epc_npu_usage_current", "epc npu current usage percent.", labels=["npu"]),
+            GaugeMetricFamily("epc_npu_usage_5m", "epc npu 5m usage percent.", labels=["npu"]),
+            GaugeMetricFamily("epc_npu_usage_15m", "epc npu 15m usage percent.", labels=["npu"])
         ]
 
         for i in info:
-            self._metrics[0].add_metric(labels=[i[0]], value=i[1])
-            self._metrics[1].add_metric(labels=[i[0]], value=i[2])
-            self._metrics[2].add_metric(labels=[i[0]], value=i[3])
+            for fi in range(3):
+                self._metrics[fi].add_metric(labels=[i[0]], value=i[fi + 1])
 
         if registry:
             registry.register(self)
