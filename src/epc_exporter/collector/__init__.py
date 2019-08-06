@@ -1,3 +1,4 @@
 from .npu_utilization import NPUUtilizationCollector
 from .port_datalink_counters import PortDataLinkCounterCollector
+from .port_npu_counters import PortNPUCounterCollector
 from .port_utilization_table import PortUtilizationCollector

@@ -1,8 +1,9 @@
 import textfsm
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily, HistogramMetricFamily
-from prometheus_client.utils import INF, floatToGoString
+from prometheus_client.utils import INF
 
+from collector.utils import add_histogram_metrics, add_gauge_metrics
 from device import AbstractDevice
 
 field_port = 0
@@ -133,19 +134,3 @@ class PortDataLinkCounterCollector(object):
             add_histogram_metrics(metrics[11], [port], _upper_bounds, row[tx_frames_by_size], row[tx_bytes_ok])
 
         return metrics
-
-
-def add_gauge_metrics(metric, labels, value):
-    if value != "n/a":
-        metric.add_metric(labels=labels, value=value)
-
-
-def add_histogram_metrics(metric, labels, upper_bounds, values, sum_value):
-    if values[0] != "n/a":
-        buckets = []
-        acc = 0
-        for index, bound in enumerate(upper_bounds):
-            acc += float(values[index])
-            buckets.append([floatToGoString(bound), acc])
-
-        metric.add_metric(labels=labels, buckets=buckets, sum_value=sum_value)

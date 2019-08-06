@@ -5,7 +5,7 @@ import time
 
 from prometheus_client import REGISTRY, write_to_textfile
 
-from collector import NPUUtilizationCollector, PortUtilizationCollector, PortDataLinkCounterCollector
+from collector import *
 from device import RemoteDevice
 
 
@@ -33,6 +33,7 @@ if __name__ == "__main__":
     NPUUtilizationCollector(templates_path, device)
     PortUtilizationCollector(templates_path, device)
     PortDataLinkCounterCollector(templates_path, device)
+    PortNPUCounterCollector(templates_path, device)
 
     while not killer.kill_now:
         device.start_session()
