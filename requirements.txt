@@ -1,4 +1,4 @@
-future==0.17.1
 prometheus-client==0.7.1
-six==1.12.0
 textfsm==1.1.0
+paramiko==2.6.0
+paramiko-expect==0.2.8

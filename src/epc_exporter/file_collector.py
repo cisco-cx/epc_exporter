@@ -1,3 +1,4 @@
+import os
 import signal
 import sys
 import time
@@ -5,7 +6,7 @@ import time
 from prometheus_client import REGISTRY, write_to_textfile
 
 from collector import NPUUtilizationCollector, PortUtilizationCollector, PortDataLinkCounterCollector
-from device import TestDevice
+from device import RemoteDevice
 
 
 class GracefulKiller:
@@ -27,14 +28,17 @@ if __name__ == "__main__":
 
     killer = GracefulKiller()
 
-    device = TestDevice(test_data_path)
+    device = RemoteDevice(os.environ['DEVICE_HOSTNAME'], os.environ["DEVICE_USERNAME"], os.environ["DEVICE_PASSWORD"])
 
     NPUUtilizationCollector(templates_path, device)
     PortUtilizationCollector(templates_path, device)
     PortDataLinkCounterCollector(templates_path, device)
 
     while not killer.kill_now:
+        device.start_session()
         write_to_textfile(output_path, REGISTRY)
+        device.stop_session()
+
         for x in range(12):
             if not killer.kill_now:
                 time.sleep(5)

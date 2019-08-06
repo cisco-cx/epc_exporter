@@ -73,8 +73,6 @@ class PortDataLinkCounterCollector(object):
                               labels=["port", "status"]),
             GaugeMetricFamily("epc_port_tx_pause", "The number of correct transmitted flow-control frames.",
                               labels=["port"]),
-            GaugeMetricFamily("epc_port_tx_pause", "The number of correct transmitted flow-control frames.",
-                              labels=["port"]),
             GaugeMetricFamily("epc_port_tx_err",
                               "The number of frames transmitted with an error due to transmit FIFO underflow or TXERR signal assertion.",
                               labels=["port"]),
