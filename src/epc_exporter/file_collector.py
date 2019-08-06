@@ -4,7 +4,7 @@ import time
 
 from prometheus_client import CollectorRegistry, write_to_textfile
 
-from collector import TestCollector, NPUUtilizationCollector, PortUtilizationCollector
+from collector import TestCollector, NPUUtilizationCollector, PortUtilizationCollector, PortDataLinkCounterCollector
 from device import TestDevice
 
 
@@ -34,6 +34,7 @@ if __name__ == "__main__":
         TestCollector(registry)
         NPUUtilizationCollector(templates_path, device, registry)
         PortUtilizationCollector(templates_path, device, registry)
+        PortDataLinkCounterCollector(templates_path, device, registry)
         write_to_textfile(output_path, registry)
         for x in range(12):
             if not killer.kill_now:

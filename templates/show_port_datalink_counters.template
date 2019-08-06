@@ -1,10 +1,43 @@
-Value Filldown Port  (\d+/\d+)
-Value RxName   (\w+.*\w+)
-Value RxValue   (\d+|(n/a))
-Value TxName   (\w+.*\w+)
-Value TxValue   (\d+|(n/a))
+Value Port (\d+/\d+)
+Value RxUnicastFramesValue (\d+|(n/a))
+Value RxMulticastFramesValue (\d+|(n/a))
+Value RxBroadcastFramesValue (\d+|(n/a))
+Value RxBytesOK (\d+|(n/a))
+Value RxBytesBad (\d+|(n/a))
+Value RxShortOk (\d+|(n/a))
+Value RxShortCrc (\d+|(n/a))
+Value RxOvf (\d+|(n/a))
+Value RxNormCrc (\d+|(n/a))
+Value RxLongOk (\d+|(n/a))
+Value RxLongCrc (\d+|(n/a))
+Value RxPause (\d+|(n/a))
+Value RxFalsCrs (\d+|(n/a))
+Value RxSymErr (\d+|(n/a))
+Value List RxFrameBySizeValue (\d+|(n/a))
+Value TxUnicastFramesValue (\d+|(n/a))
+Value TxMulticastFramesValue (\d+|(n/a))
+Value TxBroadcastFramesValue (\d+|(n/a))
+Value TxBytesOK (\d+|(n/a))
+Value TxBytesBad (\d+|(n/a))
+Value TxPause (\d+|(n/a))
+Value TxErr (\d+|(n/a))
+Value List TxFrameBySizeValue (\d+|(n/a))
 
 Start
+  ^Counters for port -> Continue.Record
   ^Counters for port ${Port}:
-  ^RX ${RxName} \s+ ${RxValue} \| TX ${TxName} \s+ ${TxValue} -> Record
-  ^RX ${RxName} \s+ ${RxValue} \| -> Record
+  ^RX Unicast frames \s+ ${RxUnicastFramesValue} \| TX Unicast frames \s+ ${TxUnicastFramesValue}
+  ^RX Multicast frames \s+ ${RxMulticastFramesValue} \| TX Multicast frames \s+ ${TxMulticastFramesValue}
+  ^RX Broadcast frames \s+ ${RxBroadcastFramesValue} \| TX Broadcast frames \s+ ${TxBroadcastFramesValue}
+  ^RX Size .* (frames|fr) \s+ ${RxFrameBySizeValue} \| TX Size .* (frames|fr) \s+ ${TxFrameBySizeValue}
+  ^RX Bytes OK \s+ ${RxBytesOK} \| TX Bytes OK \s+ ${TxBytesOK}
+  ^RX Bytes BAD \s+ ${RxBytesBad} \| TX Bytes BAD \s+ ${TxBytesBad}
+  ^RX SHORT OK \s+ ${RxShortOk} \| TX PAUSE \s+ ${TxPause}
+  ^RX SHORT CRC \s+ ${RxShortCrc} \| TX ERR \s+ ${TxErr}
+  ^RX OVF \s+ ${RxOvf} \|
+  ^RX NORM CRC \s+ ${RxNormCrc} \|
+  ^RX LONG OK \s+ ${RxLongOk} \|
+  ^RX LONG CRC \s+ ${RxLongCrc} \|
+  ^RX PAUSE \s+ ${RxPause} \|
+  ^RX FALS CRS \s+ ${RxFalsCrs} \|
+  ^RX SYM ERR \s+ ${RxSymErr} \|
