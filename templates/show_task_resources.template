@@ -7,6 +7,11 @@ Value MemoryUsed ((\d+(\.\d+)?(G|M|K))|(--))
 Value MemoryAlloc (\d+(\.\d+)?(G|M|K))
 Value FilesUsed (\d+|(--))
 Value FilesAlloc (\d+)
+Value TotalProcessCount (\d+)
+Value TotalCPUUsed (\d+(\.\d+)?%)
+Value TotalMemoryUsed (\d+(\.\d+)?(G|M|K))
+Value TotalFilesUsed (\d+)
 
 Start
   ^ ${CPU} ${Facility}\s+${Instance}\s+${CPUUsed}\s+${CPUAlloc}\s+${MemoryUsed}\s+${MemoryAlloc}\s+${FilesUsed}\s+${FilesAlloc} -> Record
+  ^Total\s+${TotalProcessCount}\s+${TotalCPUUsed}\s+${TotalMemoryUsed}\s+${TotalFilesUsed} -> Record
