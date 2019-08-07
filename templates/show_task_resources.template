@@ -1,0 +1,12 @@
+Value CPU (\d+/\d+)
+Value Facility (\w+)
+Value Instance (\d+)
+Value CPUUsed ((\d+(\.\d+)?%)|(--))
+Value CPUAlloc (\d+(\.\d+)?%)
+Value MemoryUsed ((\d+(\.\d+)?(G|M|K))|(--))
+Value MemoryAlloc (\d+(\.\d+)?(G|M|K))
+Value FilesUsed (\d+|(--))
+Value FilesAlloc (\d+)
+
+Start
+  ^ ${CPU} ${Facility}\s+${Instance}\s+${CPUUsed}\s+${CPUAlloc}\s+${MemoryUsed}\s+${MemoryAlloc}\s+${FilesUsed}\s+${FilesAlloc} -> Record

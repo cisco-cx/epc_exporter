@@ -34,6 +34,7 @@ if __name__ == "__main__":
     PortUtilizationCollector(templates_path, device)
     PortDataLinkCounterCollector(templates_path, device)
     PortNPUCounterCollector(templates_path, device)
+    TaskResourceCollector(templates_path, device)
 
     while not killer.kill_now:
         device.start_session()
