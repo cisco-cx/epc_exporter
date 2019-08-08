@@ -8,13 +8,15 @@ PROMPT = '.*# '
 
 class RemoteDevice(AbstractDevice):
 
-    def __init__(self, hostname, username, password):
+    def __init__(self, hostname, username, password, test_password=None):
         self._hostname = hostname
         self._username = username
         self._password = password
+        self._test_pasword = test_password
         self.client = SSHClient()
         self.client.set_missing_host_key_policy(WarningPolicy())
         self._session = None
+        self._test_commands_enabled = False
         super().__init__()
 
     def start_session(self):
@@ -28,6 +30,18 @@ class RemoteDevice(AbstractDevice):
         self._session.send("exit")
         self._session.expect()
         self._session.close()
+        self._session = None
+
+    def enable_test_commands(self):
+        if self._session is None:
+            return ""
+
+        if not self._test_commands_enabled:
+            self._session.send("cli test-commands")
+            self._session.expect("Password:")
+            self._session.send(self._test_pasword)
+            self._session.expect(PROMPT)
+            self._test_commands_enabled = True
 
     def exec(self, command: str) -> str:
         if self._session is None:

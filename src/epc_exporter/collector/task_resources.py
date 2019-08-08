@@ -55,6 +55,8 @@ class TaskResourceCollector(object):
         ]
 
         for row in rows[:-1]:
+            if row[field_cpu] == '':
+                continue
             labels = [row[field_cpu], row[field_facility], row[field_instance]]
             add_gauge_metrics(metrics[0], labels, parse_percent(row[field_cpu_used]))
             add_gauge_metrics(metrics[1], labels, parse_percent(row[field_cpu_alloc]))

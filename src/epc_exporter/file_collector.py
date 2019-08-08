@@ -6,7 +6,7 @@ import time
 from prometheus_client import REGISTRY, write_to_textfile
 
 from collector import *
-from device import RemoteDevice
+from device import RemoteDevice, TestDevice
 
 
 class GracefulKiller:
@@ -23,18 +23,24 @@ class GracefulKiller:
 if __name__ == "__main__":
     "Running in text collector mode"
     templates_path = sys.argv[1]
-    test_data_path = sys.argv[2]
-    output_path = sys.argv[3]
+    output_path = sys.argv[2]
 
     killer = GracefulKiller()
 
-    device = RemoteDevice(os.environ['DEVICE_HOSTNAME'], os.environ["DEVICE_USERNAME"], os.environ["DEVICE_PASSWORD"])
+    file_device = os.environ['FILE_DEVICE']
+
+    if file_device == "":
+        device = RemoteDevice(os.environ['DEVICE_HOSTNAME'], os.environ["DEVICE_USERNAME"],
+                              os.environ["DEVICE_PASSWORD"], os.environ["TEST_PASSWORD"])
+    else:
+        device = TestDevice(file_device)
 
     NPUUtilizationCollector(templates_path, device)
     PortUtilizationCollector(templates_path, device)
     PortDataLinkCounterCollector(templates_path, device)
     PortNPUCounterCollector(templates_path, device)
     TaskResourceCollector(templates_path, device)
+    VppctlShowErrorsCollector(templates_path, device)
 
     while not killer.kill_now:
         device.start_session()

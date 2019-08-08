@@ -1,0 +1,281 @@
+Tuesday July 23 06:41:27 JST 2019
+   Count                    Node                         Reason        Index
+Thread 0 (vpp_main):
+         1        ip6-meh-imposition-plugin           no npusim yet     230
+     54007             ip6-icmp-input             router advertisement  804
+       109             ip6-icmp-error             hop limit exceeded r  833
+        26             ip6-icmp-error             error message droppe  835
+         1                ip6-input                unknown ip protocol  991
+       135       ip6-reassembly-expire-walk       fragments dropped du 1086
+Thread 1 (vpp_wk_0):
+   1036454                null-node                blackholed packets    0
+      1298             meh-disposition                meh bad proto     174
+  25484276             meh-disposition                 hh to exec       181
+        27              gtpu4-lookup              packets with corrupt  311
+       332              gtpu6-lookup              packets with corrupt  316
+      7467             fp-shmif-input                  event read       353
+ 121365014           fastpath-6tuple-ip6             IP6 HH to Exec     361
+  18215034           fastpath-executive            packet sent to app   365
+         8            ip6-smp-pre-check              packets dropped    616
+    571699            ip6-smp-pre-check            packets sent to app  618
+   2960781             ethernet-input                   no error        641
+       101             ethernet-input                 unknown vlan      644
+        45             ethernet-input               subinterface down   646
+   2369025               snap-input               unknown oui/snap pro  719
+        13             ip6-icmp-input                 unknown type      789
+        13             ip6-icmp-input               echo replies sent   795
+ 259555068             ip6-icmp-input             neighbor solicitatio  797
+      4492             ip6-icmp-input             neighbor advertiseme  798
+         2             ip6-icmp-error             hop limit exceeded r  833
+   1025444             ip6-icmp-error             parameter problem re  834
+    155713                ip6-glean               address overflow dro 1006
+    671376                ip6-glean               neighbor solicitatio 1007
+         2             ip6-reassembly               valid ip6 packets  1012
+       143                ip6-frag                number of sent fragm 1099
+ 107313272                arp-input                 ARP replies sent   1162
+         2                arp-input               ARP request IP4 sour 1169
+         3                arp-input               ARP probe or announc 1174
+        66                arp-input               Interface is not IP  1176
+Thread 2 (vpp_wk_1):
+     26988                null-node                blackholed packets    0
+       887             meh-disposition                meh bad proto     174
+  27259977             meh-disposition                 hh to exec       181
+         5              gtpu4-lookup              packets with corrupt  311
+      1089              gtpu6-lookup              packets with corrupt  316
+   1668185            ip4-flowdb-lookup               no flow found     342
+      9343             fp-shmif-input                  event read       353
+  83645474           fastpath-6tuple-ip6             IP6 HH to Exec     361
+  14780582           fastpath-executive            packet sent to app   365
+         2            ip6-smp-pre-check              packets dropped    616
+    636654            ip6-smp-pre-check            packets sent to app  618
+       918             ethernet-input                   no error        641
+        98             ethernet-input               subinterface down   646
+         5             ip6-icmp-input                 unknown type      789
+         5             ip6-icmp-input               echo replies sent   795
+ 389329892             ip6-icmp-input             neighbor solicitatio  797
+      6731             ip6-icmp-input             neighbor advertiseme  798
+         2                ip4-input                 valid ip4 packets   850
+       155                ip6-glean               address overflow dro 1006
+    796484                ip6-glean               neighbor solicitatio 1007
+     14352                ip6-frag                number of sent fragm 1099
+Thread 3 (vpp_wk_2):
+     73007                null-node                blackholed packets    0
+       867             meh-disposition                meh bad proto     174
+  26220983             meh-disposition                 hh to exec       181
+        14              gtpu4-lookup              packets with corrupt  311
+      1686              gtpu6-lookup              packets with corrupt  316
+    992014            ip4-flowdb-lookup               no flow found     342
+      9077             fp-shmif-input                  event read       353
+  98455234           fastpath-6tuple-ip6             IP6 HH to Exec     361
+  35794126           fastpath-executive            packet sent to app   365
+       159            ip6-smp-pre-check              packets dropped    616
+    635811            ip6-smp-pre-check            packets sent to app  618
+       885             ethernet-input                   no error        641
+        44             ethernet-input                 unknown vlan      644
+         2             ethernet-input               subinterface down   646
+         3             ip6-icmp-input                 unknown type      789
+         6             ip6-icmp-input               echo replies sent   795
+       549             ip6-icmp-input             neighbor solicitatio  797
+         4             ip6-icmp-input             neighbor advertiseme  798
+        98                ip6-glean               neighbor solicitatio 1007
+        40                ip6-frag                number of sent fragm 1099
+Thread 4 (vpp_wk_3):
+    134842                null-node                blackholed packets    0
+         1                meh-drop                  packets meh drop    168
+      1486             meh-disposition                meh bad proto     174
+  19522732             meh-disposition                 hh to exec       181
+        12              gtpu4-lookup              packets with corrupt  311
+        90              gtpu6-lookup              packets with corrupt  316
+   1792009            ip4-flowdb-lookup               no flow found     342
+      6366             fp-shmif-input                  event read       353
+ 162541204           fastpath-6tuple-ip6             IP6 HH to Exec     361
+         1           fastpath-executive            hold queue overflow  364
+  13289228           fastpath-executive            packet sent to app   365
+         1           fastpath-executive              invalid context    366
+        20            ip6-smp-pre-check              packets dropped    616
+    668639            ip6-smp-pre-check            packets sent to app  618
+      1796             ethernet-input                   no error        641
+        26             ethernet-input                 unknown vlan      644
+        35             ethernet-input               subinterface down   646
+         5             ip4-icmp-input               echo replies sent   769
+ 129760437             ip6-icmp-input             neighbor solicitatio  797
+      2252             ip6-icmp-input             neighbor advertiseme  798
+         1                ip4-input                 valid ip4 packets   850
+    350247                ip6-glean               address overflow dro 1006
+    129062                ip6-glean               neighbor solicitatio 1007
+        32                ip6-frag                number of sent fragm 1099
+Thread 5 (vpp_wk_4):
+     35044                null-node                blackholed packets    0
+   5097262               dpdk-input                     no error        68
+        47                meh-drop                  packets meh drop    168
+      1087             meh-disposition                meh bad proto     174
+  10102860             meh-disposition                 hh to exec       181
+       377              gtpu4-lookup              packets with corrupt  311
+        59              gtpu6-lookup              packets with corrupt  316
+      6872             fp-shmif-input                  event read       353
+ 102566108           fastpath-6tuple-ip6             IP6 HH to Exec     361
+        20           fastpath-executive            hold queue overflow  364
+  57668787           fastpath-executive            packet sent to app   365
+        47           fastpath-executive              invalid context    366
+       848         ip6-smp-egress-extended         packets fragmented   531
+         1            ip4-smp-pre-check            packets sent to app  597
+         2            ip6-smp-pre-check              invalid tep row    605
+   1048147            ip6-smp-pre-check              packets dropped    616
+   1465546            ip6-smp-pre-check            packets sent to app  618
+      1340             ethernet-input                   no error        641
+        90             ethernet-input                 unknown vlan      644
+        23             ethernet-input               subinterface down   646
+   2368995               snap-input               unknown oui/snap pro  719
+         9             ip6-icmp-input                 unknown type      789
+ 194660675             ip6-icmp-input             neighbor solicitatio  797
+      3372             ip6-icmp-input             neighbor advertiseme  798
+         1                ip6-glean               address overflow dro 1006
+       223                ip6-glean               neighbor solicitatio 1007
+    149444                ip4-frag                number of sent fragm 1091
+   1785474                ip6-frag                number of sent fragm 1099
+       126                ip6-frag                  malformed packet   1102
+ 107307445                arp-input                 ARP replies sent   1162
+         2                arp-input               ARP request IP4 sour 1169
+         3                arp-input               ARP probe or announc 1174
+         2                arp-input               Interface is not IP  1176
+Thread 6 (vpp_wk_5):
+     25954                null-node                blackholed packets    0
+    391847               dpdk-input                     no error        68
+        48                meh-drop                  packets meh drop    168
+      1161             meh-disposition                meh bad proto     174
+  13693707             meh-disposition                 hh to exec       181
+        10              gtpu4-lookup              packets with corrupt  311
+      1235              gtpu6-lookup              packets with corrupt  316
+      9089             fp-shmif-input                  event read       353
+ 115814293           fastpath-6tuple-ip6             IP6 HH to Exec     361
+        21           fastpath-executive            hold queue overflow  364
+  59964703           fastpath-executive            packet sent to app   365
+        48           fastpath-executive              invalid context    366
+      1449         ip6-smp-egress-extended         packets fragmented   531
+         1         ip6-smp-egress-extended        fragmentation failed  536
+      9153            ip6-smp-pre-check              packets dropped    616
+   1601721            ip6-smp-pre-check            packets sent to app  618
+      2173             ethernet-input                   no error        641
+        15             ethernet-input                 unknown vlan      644
+        10             ethernet-input               subinterface down   646
+         4             ip6-icmp-input                 unknown type      789
+ 194662892             ip6-icmp-input             neighbor solicitatio  797
+      3378             ip6-icmp-input             neighbor advertiseme  798
+       145                ip6-glean               neighbor solicitatio 1007
+     49286                ip4-frag                number of sent fragm 1091
+   1759683                ip6-frag                number of sent fragm 1099
+       118                ip6-frag                  malformed packet   1102
+Thread 7 (vpp_wk_6):
+    107058                null-node                blackholed packets    0
+    185392               dpdk-input                     no error        68
+        51                meh-drop                  packets meh drop    168
+       973             meh-disposition                meh bad proto     174
+  12065601             meh-disposition                 hh to exec       181
+        11              gtpu4-lookup              packets with corrupt  311
+       762              gtpu6-lookup              packets with corrupt  316
+   1827703            ip4-flowdb-lookup               no flow found     342
+      5575             fp-shmif-input                  event read       353
+ 129500000           fastpath-6tuple-ip6             IP6 HH to Exec     361
+        23           fastpath-executive            hold queue overflow  364
+  60366785           fastpath-executive            packet sent to app   365
+        51           fastpath-executive              invalid context    366
+      9959         ip6-smp-egress-extended         packets fragmented   531
+         5            ip4-smp-pre-check            packets sent to app  597
+         2            ip6-smp-pre-check              invalid tep row    605
+      8407            ip6-smp-pre-check              packets dropped    616
+   1497100            ip6-smp-pre-check            packets sent to app  618
+      1328             ethernet-input                   no error        641
+        18             ethernet-input                 unknown vlan      644
+        21             ethernet-input               subinterface down   646
+        29             ip6-icmp-input                 unknown type      789
+         9             ip6-icmp-input               echo replies sent   795
+ 194664587             ip6-icmp-input             neighbor solicitatio  797
+      3363             ip6-icmp-input             neighbor advertiseme  798
+         1             ip6-icmp-input             neighbor advertiseme  799
+        22             ip6-icmp-error             hop limit exceeded r  833
+       186             ip6-icmp-error             parameter problem re  834
+         1                ip4-input                 valid ip4 packets   850
+         7                ip6-glean               address overflow dro 1006
+       210                ip6-glean               neighbor solicitatio 1007
+        22             ip6-reassembly               valid ip6 packets  1012
+     58812                ip4-frag                number of sent fragm 1091
+   1817353                ip6-frag                number of sent fragm 1099
+       128                ip6-frag                  malformed packet   1102
+Thread 8 (vpp_wk_7):
+     36695                null-node                blackholed packets    0
+    703518               dpdk-input                     no error        68
+        47                meh-drop                  packets meh drop    168
+      1630             meh-disposition                meh bad proto     174
+  13632110             meh-disposition                 hh to exec       181
+        13              gtpu4-lookup              packets with corrupt  311
+       279              gtpu6-lookup              packets with corrupt  316
+   2717863            ip4-flowdb-lookup               no flow found     342
+      6555             fp-shmif-input                  event read       353
+ 125087231           fastpath-6tuple-ip6             IP6 HH to Exec     361
+        16           fastpath-executive            hold queue overflow  364
+  53028478           fastpath-executive            packet sent to app   365
+        47           fastpath-executive              invalid context    366
+      5237         ip6-smp-egress-extended         packets fragmented   531
+         3            ip4-smp-pre-check            packets sent to app  597
+         1            ip6-smp-pre-check              invalid tep row    605
+     10502            ip6-smp-pre-check              packets dropped    616
+   1477101            ip6-smp-pre-check            packets sent to app  618
+      1865             ethernet-input                   no error        641
+        37             ethernet-input                 unknown vlan      644
+        30             ethernet-input               subinterface down   646
+        22             ip6-icmp-input                 unknown type      789
+ 194666549             ip6-icmp-input             neighbor solicitatio  797
+      3371             ip6-icmp-input             neighbor advertiseme  798
+       174                ip6-glean               neighbor solicitatio 1007
+         1             ip6-reassembly               valid ip6 packets  1012
+     57688                ip4-frag                number of sent fragm 1091
+   1706344                ip6-frag                number of sent fragm 1099
+       122                ip6-frag                  malformed packet   1102
+Total:
+   1476042                null-node                blackholed packets      0
+   6378019               dpdk-input                     no error          68
+       194                meh-drop                  packets meh drop      168
+      9389             meh-disposition                meh bad proto       174
+ 147982246             meh-disposition                 hh to exec         181
+         1        ip6-meh-imposition-plugin           no npusim yet       230
+       469              gtpu4-lookup              packets with corrupt    311
+      5532              gtpu6-lookup              packets with corrupt    316
+   8997774            ip4-flowdb-lookup               no flow found       342
+     60344             fp-shmif-input                  event read         353
+ 938974558           fastpath-6tuple-ip6             IP6 HH to Exec       361
+        81           fastpath-executive            hold queue overflow    364
+ 313107723           fastpath-executive            packet sent to app     365
+       194           fastpath-executive              invalid context      366
+     17493         ip6-smp-egress-extended         packets fragmented     531
+         1         ip6-smp-egress-extended        fragmentation failed    536
+         9            ip4-smp-pre-check            packets sent to app    597
+         5            ip6-smp-pre-check              invalid tep row      605
+   1076398            ip6-smp-pre-check              packets dropped      616
+   8554271            ip6-smp-pre-check            packets sent to app    618
+   2971086             ethernet-input                   no error          641
+       331             ethernet-input                 unknown vlan        644
+       264             ethernet-input               subinterface down     646
+   4738020               snap-input               unknown oui/snap pro    719
+         5             ip4-icmp-input               echo replies sent     769
+        85             ip6-icmp-input                 unknown type        789
+        33             ip6-icmp-input               echo replies sent     795
+1557300649             ip6-icmp-input             neighbor solicitatio    797
+     26963             ip6-icmp-input             neighbor advertiseme    798
+         1             ip6-icmp-input             neighbor advertiseme    799
+     54007             ip6-icmp-input             router advertisement    804
+       133             ip6-icmp-error             hop limit exceeded r    833
+   1025630             ip6-icmp-error             parameter problem re    834
+        26             ip6-icmp-error             error message droppe    835
+         4                ip4-input                 valid ip4 packets     850
+         1                ip6-input                unknown ip protocol    991
+    506123                ip6-glean               address overflow dro   1006
+   1597772                ip6-glean               neighbor solicitatio   1007
+        25             ip6-reassembly               valid ip6 packets    1012
+       135       ip6-reassembly-expire-walk       fragments dropped du   1086
+    315230                ip4-frag                number of sent fragm   1091
+   7083421                ip6-frag                number of sent fragm   1099
+       494                ip6-frag                  malformed packet     1102
+ 214620717                arp-input                 ARP replies sent     1162
+         4                arp-input               ARP request IP4 sour   1169
+         6                arp-input               ARP probe or announc   1174
+        68                arp-input               Interface is not IP    1176
