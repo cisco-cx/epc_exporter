@@ -41,6 +41,7 @@ if __name__ == "__main__":
     PortNPUCounterCollector(templates_path, device)
     TaskResourceCollector(templates_path, device)
     VppctlShowErrorsCollector(templates_path, device)
+    VppctlShowHistogramVerboseCollector(templates_path, device)
 
     while not killer.kill_now:
         device.start_session()

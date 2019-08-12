@@ -1,7 +1,6 @@
 import textfsm
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import CounterMetricFamily
-from prometheus_client.utils import INF
 
 from collector.utils import add_gauge_metrics
 from device import AbstractDevice
@@ -16,8 +15,6 @@ field_rx_frames_by_size = 6
 field_rx_bytes_by_size = 7
 field_tx_frames_by_size = 8
 field_tx_bytes_by_size = 9
-
-_upper_bounds = [63, 127, 255, 511, 1023, 2047, 4095, 8191, INF]
 
 field_thread_id = 0
 field_thread_name = 1
@@ -40,7 +37,7 @@ class VppctlShowErrorsCollector(object):
 
     def collect(self):
         self._device.enable_test_commands()
-        output = self._device.exec("vppctl show errors verbose")
+        output = self._device.exec('vppctl "show errors verbose"')
         rows = self._parser.ParseText(output)
 
         if len(rows) == 0:

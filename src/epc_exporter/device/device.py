@@ -36,7 +36,7 @@ class TestDevice(AbstractDevice):
         pass
 
     def exec(self, command: str) -> str:
-        filename = command.replace(' ', '_')
+        filename = command.replace(' ', '_').replace('"', '')
         data_file = '{}/{}.txt'.format(self._data_dir, filename)
         with open(data_file, 'r') as file:
             return file.read()

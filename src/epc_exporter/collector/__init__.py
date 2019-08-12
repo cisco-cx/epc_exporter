@@ -4,3 +4,4 @@ from .port_npu_counters import PortNPUCounterCollector
 from .port_utilization_table import PortUtilizationCollector
 from .task_resources import TaskResourceCollector
 from .vppctl_show_errors_verbose import VppctlShowErrorsCollector
+from .vppctl_show_histogram_verbose import VppctlShowHistogramVerboseCollector
