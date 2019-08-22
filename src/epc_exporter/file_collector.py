@@ -27,13 +27,18 @@ if __name__ == "__main__":
 
     killer = GracefulKiller()
 
-    file_device = os.environ['FILE_DEVICE']
-
-    if file_device == "":
+    file_device = os.environ.get('FILE_DEVICE')
+    if file_device is not None:
+        device = TestDevice(file_device)
+    else:
         device = RemoteDevice(os.environ['DEVICE_HOSTNAME'], os.environ["DEVICE_USERNAME"],
                               os.environ["DEVICE_PASSWORD"], os.environ["TEST_PASSWORD"])
+
+    freqEnv = os.environ.get('FREQ')
+    if freqEnv is not None:
+        freq_in_seconds = int(freqEnv)
     else:
-        device = TestDevice(file_device)
+        freq_in_seconds = 60
 
     NPUUtilizationCollector(templates_path, device)
     PortUtilizationCollector(templates_path, device)
@@ -52,6 +57,6 @@ if __name__ == "__main__":
         write_to_textfile(output_path, REGISTRY)
         device.stop_session()
 
-        for x in range(12):
+        for x in range(int(freq_in_seconds / 5)):
             if not killer.kill_now:
                 time.sleep(5)

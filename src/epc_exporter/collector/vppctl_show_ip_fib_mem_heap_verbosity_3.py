@@ -34,6 +34,9 @@ class VppctlShowIPFibMemHeapCollector(object):
             GaugeMetricFamily("epc_vppctl_ip_fib_vrf_status", "ip fib vrf status", labels=["vrf"]),
         ]
 
+        if len(rows) == 0:
+            return metrics
+
         row = rows[0]
         add_gauge_metrics(metrics[0], [], parse_size(row[field_memory_total]))
         add_gauge_metrics(metrics[1], [], parse_size(row[field_memory_used]))
