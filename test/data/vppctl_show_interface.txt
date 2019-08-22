@@ -1,0 +1,147 @@
+Tuesday July 23 06:42:17 JST 2019
+              Name               Idx    State  MTU (L3/IP4/IP6/MPLS)     Counter          Count
+VirtualFunctionEthernet0/5/0      1      up          1500/0/0/0     rx packets            1570872071
+                                                                    rx bytes            359705236270
+                                                                    tx packets            1123282059
+                                                                    tx bytes           1297243517147
+                                                                    drops                  889503129
+                                                                    ip6                        81802
+                                                                    rx-miss                      664
+                                                                    unknown-vlan                 171
+                                                                    unknown-vlan byt           29324
+VirtualFunctionEthernet0/5/0.203  17     up          1500/0/0/0     rx packets             628322833
+                                                                    rx bytes            154086091933
+                                                                    tx packets             990518111
+                                                                    tx bytes           1189438149741
+                                                                    drops                  390187363
+                                                                    ip6                    627533134
+VirtualFunctionEthernet0/5/0.204  18     up          1500/0/0/0     rx packets             756985688
+                                                                    rx bytes            177571909028
+                                                                    tx packets              38165360
+                                                                    tx bytes              3464887993
+                                                                    drops                  391217497
+                                                                    ip6                    756195989
+VirtualFunctionEthernet0/5/0.170  19     up          1500/0/0/0     rx packets             185481397
+                                                                    rx bytes             28039533339
+                                                                    tx packets              93342194
+                                                                    tx bytes            104232429465
+                                                                    drops                  108097907
+                                                                    ip4                     77375129
+                                                                    ip6                            8
+VirtualFunctionEthernet0/6/0      2      up          1500/0/0/0     rx packets            3517723457
+                                                                    rx bytes           2686527355893
+                                                                    tx packets            2157206813
+                                                                    tx bytes           1626977145483
+                                                                    drops                  895053640
+                                                                    ip6                   1994717733
+                                                                    unknown-vlan                 160
+                                                                    unknown-vlan byt           27976
+VirtualFunctionEthernet0/6/0.203  20     up          1500/0/0/0     rx packets             627782034
+                                                                    rx bytes            138778522498
+                                                                    tx packets             887394772
+                                                                    tx bytes           1059175451714
+                                                                    drops                  390360575
+                                                                    ip6                    626992345
+VirtualFunctionEthernet0/6/0.204  21     up          1500/0/0/0     rx packets             720518408
+                                                                    rx bytes            169564441291
+                                                                    tx packets              38550776
+                                                                    tx bytes              3508581485
+                                                                    drops                  390222723
+                                                                    ip6                    719728719
+VirtualFunctionEthernet0/6/0.170  22     up          1500/0/0/0     rx packets             174705038
+                                                                    rx bytes             27361220810
+                                                                    tx packets              97220818
+                                                                    tx bytes            108388664700
+                                                                    drops                  108092068
+                                                                    ip4                     66604992
+                                                                    ip6                            4
+local0                            0     down          0/0/0/0       drops                         14
+loop1                             5      up          9000/0/0/0     tx packets                     2
+                                                                    tx bytes                     300
+                                                                    drops                          1
+                                                                    ip6                            1
+loop2                             15     up          9000/0/0/0     tx packets                     2
+                                                                    tx bytes                     300
+                                                                    drops                    1252779
+                                                                    ip6                            1
+                                                                    ip6-frags                7325330
+loop3                             16     up          9000/0/0/0     tx packets                  2146
+                                                                    tx bytes                  184684
+                                                                    drops                    3824084
+                                                                    ip6                         1073
+                                                                    ip6-frags                  73321
+loop5000                          4      up          9000/0/0/0
+memif0/114716                     23     up          9000/0/0/0     rx packets              45382775
+                                                                    rx bytes              9445667744
+                                                                    tx packets              45657526
+                                                                    tx bytes              9148999932
+memif0/114717                     24     up          9000/0/0/0     rx packets              65658122
+                                                                    rx bytes             12211242997
+                                                                    tx packets              65844096
+                                                                    tx bytes             13057703315
+memif0/114718                     25     up          9000/0/0/0     rx packets              38168634
+                                                                    rx bytes              8100617956
+                                                                    tx packets              38341971
+                                                                    tx bytes              8156389900
+memif0/114719                     26     up          9000/0/0/0     rx packets              36619543
+                                                                    rx bytes              7743527074
+                                                                    tx packets              37076477
+                                                                    tx bytes              8730251353
+memif0/114720                     27     up          9000/0/0/0     rx packets              45315075
+                                                                    rx bytes              9534774618
+                                                                    tx packets              47620073
+                                                                    tx bytes             12846125500
+memif0/114721                     28     up          9000/0/0/0     rx packets              43796364
+                                                                    rx bytes              8966128088
+                                                                    tx packets              43961690
+                                                                    tx bytes              9713670969
+memif0/114722                     29     up          9000/0/0/0     rx packets              38372939
+                                                                    rx bytes              7800234453
+                                                                    tx packets              38540907
+                                                                    tx bytes              8034122388
+memif0/114723                     30     up          9000/0/0/0     rx packets              50107999
+                                                                    rx bytes             10105917849
+                                                                    tx packets              50284752
+                                                                    tx bytes             10188547470
+memif0/128952                     14     up          9000/0/0/0     rx packets             150175763
+                                                                    rx bytes             18699591138
+                                                                    tx packets             161730838
+                                                                    tx bytes             20123272748
+memif0/130234                     8      up          9000/0/0/0     rx packets                     1
+                                                                    rx bytes                     190
+                                                                    tx packets                  2003
+                                                                    tx bytes                  236422
+memif0/130235                     6      up          9000/0/0/0     rx packets               3703961
+                                                                    rx bytes              2084929599
+                                                                    tx packets               3703961
+                                                                    tx bytes              2151273733
+memif0/130236                     7      up          9000/0/0/0     rx packets               2496156
+                                                                    rx bytes               310191901
+                                                                    tx packets               2496156
+                                                                    tx bytes               354670909
+memif0/130237                     12     up          9000/0/0/0     rx packets               4943844
+                                                                    rx bytes               524057772
+                                                                    tx packets               4943844
+                                                                    tx bytes               613046964
+memif0/130238                     13     up          9000/0/0/0     rx packets               3675863
+                                                                    rx bytes              2080695741
+                                                                    tx packets               3675863
+                                                                    tx bytes              2146861275
+memif0/130239                     10     up          9000/0/0/0     rx packets               2472344
+                                                                    rx bytes               306616951
+                                                                    tx packets               2472344
+                                                                    tx bytes               351119143
+memif0/130240                     11     up          9000/0/0/0     rx packets               5037089
+                                                                    rx bytes               533940763
+                                                                    tx packets               5037089
+                                                                    tx bytes               624608365
+memif0/130241                     9      up          9000/0/0/0     rx packets                     5
+                                                                    rx bytes                     614
+                                                                    tx packets                     7
+                                                                    tx bytes                     826
+tap500                            3      up          9000/0/0/0     rx packets              12650479
+                                                                    rx bytes              1549467781
+                                                                    tx packets              20864212
+                                                                    tx bytes              5675492548
+                                                                    drops                          4
+                                                                    ip6                            4

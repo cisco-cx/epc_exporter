@@ -42,6 +42,10 @@ if __name__ == "__main__":
     TaskResourceCollector(templates_path, device)
     VppctlShowErrorsCollector(templates_path, device)
     VppctlShowHistogramVerboseCollector(templates_path, device)
+    VppctlShowRuntimeMaxCollector(templates_path, device)
+    VppctlShowInterfaceCollector(templates_path, device)
+    VppctlShowMemoryVerboseCollector(templates_path, device)
+    VppctlShowIPFibMemHeapCollector(templates_path, device)
 
     while not killer.kill_now:
         device.start_session()

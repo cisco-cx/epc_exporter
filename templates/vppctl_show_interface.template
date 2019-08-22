@@ -1,0 +1,13 @@
+Value Required Interface ([\w/\.]+)
+Value State (up|down)
+Value MTUL3 (\d+)
+Value MTUIP4 (\d+)
+Value MTUIP6 (\d+)
+Value MTUMPLS (\d+)
+Value List CounterName ([\w \-]+\b)
+Value List CounterValue (\d+)
+
+Start
+  ^[\w/\.]+ \s+ \d+ \s+ (up|down) \s+ \d+/\d+/\d+/\d+     [\w \-]+\b \s+ \d+ -> Continue.Record
+  ^${Interface} \s+ \d+ \s+ ${State} \s+ ${MTUL3}/${MTUIP4}/${MTUIP6}/${MTUMPLS} \s+ ${CounterName} \s+ ${CounterValue}
+  ^\s+ ${CounterName} \s+ ${CounterValue}

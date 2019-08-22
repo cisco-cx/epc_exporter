@@ -1,0 +1,13 @@
+Value Required ThreadId (\d+)
+Value Required ThreadName (\w+)
+Value List Name ([\w/\-]+)
+Value List MaxNodeClocks (\d+\.\d+e\d+)
+Value List VectorsAtMax (\d+)
+Value List MaxClocks (\d+\.\d+e\d+)
+Value List AvgClocks (\d+\.\d+e\d+)
+Value List AvgVectorsPerClock (\d+\.\d+e\d+)
+
+Start
+  ^Thread \d+ \w+ -> Continue.Record
+  ^Thread ${ThreadId} ${ThreadName} \(lcore \d+\)
+  ^${Name} \s+ ${MaxNodeClocks} \s+ ${VectorsAtMax} \s+ ${MaxClocks} \s+ ${AvgClocks} \s+ ${AvgVectorsPerClock}

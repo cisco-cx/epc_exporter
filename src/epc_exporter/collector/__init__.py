@@ -5,3 +5,7 @@ from .port_utilization_table import PortUtilizationCollector
 from .task_resources import TaskResourceCollector
 from .vppctl_show_errors_verbose import VppctlShowErrorsCollector
 from .vppctl_show_histogram_verbose import VppctlShowHistogramVerboseCollector
+from .vppctl_show_interface import VppctlShowInterfaceCollector
+from .vppctl_show_ip_fib_mem_heap_verbosity_3 import VppctlShowIPFibMemHeapCollector
+from .vppctl_show_memory_verbose import VppctlShowMemoryVerboseCollector
+from .vppctl_show_runtime_max import VppctlShowRuntimeMaxCollector

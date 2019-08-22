@@ -33,8 +33,8 @@ _time_multiplier = {'cl': 1 / 10 ** 10, 'ns': 1 / 10 ** 9, 'us': 1 / 10 ** 6, 'm
 class VppctlShowHistogramVerboseCollector(object):
 
     def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
-        template = open(template_dir + "/vppctl_show_histogram_verbose.template", "r")
-        self._parser = textfsm.TextFSM(template)
+        with  open(template_dir + "/vppctl_show_histogram_verbose.template", "r") as template:
+            self._parser = textfsm.TextFSM(template)
 
         self._device = device
 

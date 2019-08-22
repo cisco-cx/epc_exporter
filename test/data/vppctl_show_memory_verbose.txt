@@ -1,0 +1,98 @@
+Tuesday July 23 06:27:13 JST 2019
+Thread 0 vpp_main
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 1 vpp_wk_0
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 2 vpp_wk_1
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 3 vpp_wk_2
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 4 vpp_wk_3
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 5 vpp_wk_4
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 6 vpp_wk_5
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 7 vpp_wk_6
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
+
+
+Thread 8 vpp_wk_7
+  virtual memory start 0x7f13543d1000, size 1048640k, 262160 pages, page size 4k
+    numa 0: 123459 pages, 493836k
+    not mapped: 0 pages, 0k
+    unknown: 138701 pages, 554804k
+  total: 1.00G, used: 492.15M, free: 531.92M, trimmable: 531.33M
+    free chunks 207 free fastbin blks 0
+    max total allocated 1.00G
+no traced allocations
