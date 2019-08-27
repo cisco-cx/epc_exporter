@@ -5,7 +5,7 @@ import time
 
 from prometheus_client import REGISTRY, write_to_textfile
 
-from collector import *
+from collector import registerCollectors
 from device import RemoteDevice, TestDevice
 
 
@@ -31,8 +31,9 @@ if __name__ == "__main__":
     if file_device is not None:
         device = TestDevice(file_device)
     else:
-        device = RemoteDevice(os.environ['DEVICE_HOSTNAME'], os.environ["DEVICE_USERNAME"],
-                              os.environ["DEVICE_PASSWORD"], os.environ["TEST_PASSWORD"])
+        device = RemoteDevice(
+            os.environ['DEVICE_HOSTNAME'], os.environ["DEVICE_USERNAME"],
+            os.environ["DEVICE_PASSWORD"], os.environ["TEST_PASSWORD"])
 
     freqEnv = os.environ.get('FREQ')
     if freqEnv is not None:
@@ -40,17 +41,7 @@ if __name__ == "__main__":
     else:
         freq_in_seconds = 60
 
-    NPUUtilizationCollector(templates_path, device)
-    PortUtilizationCollector(templates_path, device)
-    PortDataLinkCounterCollector(templates_path, device)
-    PortNPUCounterCollector(templates_path, device)
-    TaskResourceCollector(templates_path, device)
-    VppctlShowErrorsCollector(templates_path, device)
-    VppctlShowHistogramVerboseCollector(templates_path, device)
-    VppctlShowRuntimeMaxCollector(templates_path, device)
-    VppctlShowInterfaceCollector(templates_path, device)
-    VppctlShowMemoryVerboseCollector(templates_path, device)
-    VppctlShowIPFibMemHeapCollector(templates_path, device)
+    registerCollectors(templates_path, device)
 
     while not killer.kill_now:
         device.start_session()

@@ -1,3 +1,6 @@
+from prometheus_client import REGISTRY
+
+from device import AbstractDevice
 from .npu_utilization import NPUUtilizationCollector
 from .port_datalink_counters import PortDataLinkCounterCollector
 from .port_npu_counters import PortNPUCounterCollector
@@ -9,3 +12,27 @@ from .vppctl_show_interface import VppctlShowInterfaceCollector
 from .vppctl_show_ip_fib_mem_heap_verbosity_3 import VppctlShowIPFibMemHeapCollector
 from .vppctl_show_memory_verbose import VppctlShowMemoryVerboseCollector
 from .vppctl_show_runtime_max import VppctlShowRuntimeMaxCollector
+
+__all__ = ['NPUUtilizationCollector', 'PortDataLinkCounterCollector',
+           'PortNPUCounterCollector', 'PortUtilizationCollector',
+           'TaskResourceCollector', 'VppctlShowErrorsCollector',
+           'VppctlShowHistogramVerboseCollector',
+           'VppctlShowInterfaceCollector', 'VppctlShowIPFibMemHeapCollector',
+           'VppctlShowMemoryVerboseCollector', 'VppctlShowRuntimeMaxCollector',
+           'registerCollectors']
+
+
+def registerCollectors(templates_path: str,
+                       device: AbstractDevice,
+                       registry=REGISTRY):
+    NPUUtilizationCollector(templates_path, device, registry)
+    PortUtilizationCollector(templates_path, device, registry)
+    PortDataLinkCounterCollector(templates_path, device, registry)
+    PortNPUCounterCollector(templates_path, device, registry)
+    TaskResourceCollector(templates_path, device, registry)
+    VppctlShowErrorsCollector(templates_path, device, registry)
+    VppctlShowHistogramVerboseCollector(templates_path, device, registry)
+    VppctlShowRuntimeMaxCollector(templates_path, device, registry)
+    VppctlShowInterfaceCollector(templates_path, device, registry)
+    VppctlShowMemoryVerboseCollector(templates_path, device, registry)
+    VppctlShowIPFibMemHeapCollector(templates_path, device, registry)
