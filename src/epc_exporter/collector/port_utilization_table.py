@@ -35,15 +35,15 @@ class PortUtilizationCollector(object):
             GaugeMetricFamily("epc_port_rx_5m",
                               "epc port rx 5m.",
                               labels=["port"]), GaugeMetricFamily(
-                "epc_port_tx_5m",
-                "epc npu tx 5m.",
-                labels=["port"]), GaugeMetricFamily(
-                "epc_port_rx_15m",
-                "epc port rx 15m.",
-                labels=["port"]), GaugeMetricFamily(
-                "epc_port_tx_15m",
-                "epc npu tx 15m.",
-                labels=["port"])
+                                  "epc_port_tx_5m",
+                                  "epc npu tx 5m.",
+                                  labels=["port"]), GaugeMetricFamily(
+                                      "epc_port_rx_15m",
+                                      "epc port rx 15m.",
+                                      labels=["port"]), GaugeMetricFamily(
+                                          "epc_port_tx_15m",
+                                          "epc npu tx 15m.",
+                                          labels=["port"])
         ]
 
         for row in rows:

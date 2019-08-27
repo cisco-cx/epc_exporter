@@ -25,10 +25,10 @@ field_total_value = 16
 field_min_value = 17
 field_max_value = 18
 
-_time_multiplier = {'cl': 1 / 10 ** 10,
-                    'ns': 1 / 10 ** 9,
-                    'us': 1 / 10 ** 6,
-                    'ms': 1 / 10 ** 3,
+_time_multiplier = {'cl': 1 / 10**10,
+                    'ns': 1 / 10**9,
+                    'us': 1 / 10**6,
+                    'ms': 1 / 10**3,
                     's': 1,
                     'm': 60,
                     'h': 60 * 60,

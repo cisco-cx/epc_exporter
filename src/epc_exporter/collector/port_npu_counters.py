@@ -50,9 +50,9 @@ class PortNPUCounterCollector(object):
             port = row[field_port]
             counter_metric = metrics[0]
             for counter, rx_frames, rx_bytes, tx_frames, tx_bytes in zip(
-                row[field_counter_name], row[field_rx_frames],
-                row[field_rx_bytes], row[field_tx_frames],
-                row[field_tx_bytes]):
+                    row[field_counter_name], row[field_rx_frames],
+                    row[field_rx_bytes], row[field_tx_frames],
+                    row[field_tx_bytes]):
                 add_gauge_metrics(counter_metric, [port, counter, "rx_frames"],
                                   rx_frames)
                 add_gauge_metrics(counter_metric, [port, counter, "rx_bytes"],

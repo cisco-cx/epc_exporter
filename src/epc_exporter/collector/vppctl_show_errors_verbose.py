@@ -61,8 +61,8 @@ class VppctlShowErrorsCollector(object):
             thread_id = row[field_thread_id]
             thread_name = row[field_thread_name]
             for node, reason, index, count in zip(
-                row[field_node], row[field_error_reason], row[field_index],
-                row[field_error_count]):
+                    row[field_node], row[field_error_reason], row[field_index],
+                    row[field_error_count]):
                 add_gauge_metrics(thread_err_count_metrics,
                                   [thread_id, thread_name, node, reason,
                                    index], float(count))
@@ -70,8 +70,8 @@ class VppctlShowErrorsCollector(object):
         total_err_count_metrics = metrics[1]
         row = rows[-1]
         for node, reason, index, count in zip(
-            row[field_node], row[field_error_reason], row[field_index],
-            row[field_error_count]):
+                row[field_node], row[field_error_reason], row[field_index],
+                row[field_error_count]):
             add_gauge_metrics(total_err_count_metrics, [node, reason, index],
                               float(count))
         return metrics

@@ -2,7 +2,7 @@ import textfsm
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
-from collector.utils import add_gauge_metrics
+from collector.utils import add_gauge_metrics, parse_size
 from device import AbstractDevice
 
 field_cpu = 0
@@ -93,17 +93,6 @@ class TaskResourceCollector(object):
             add_gauge_metrics(metrics[9], [],
                               parse_float(rows[-1][field_total_files_usage]))
         return metrics
-
-
-units = {"B": 1, "K": 10 ** 3, "M": 10 ** 6, "G": 10 ** 9, "T": 10 ** 12}
-
-
-def parse_size(size):
-    if size == '--':
-        return 0
-    number = size[:-1]
-    unit = size[-1]
-    return int(float(number) * units[unit])
 
 
 def parse_percent(size):

@@ -1,5 +1,15 @@
 from prometheus_client.utils import floatToGoString
 
+units = {"B": 1, "K": 1024, "M": 1024**2, "G": 1024**3, "T": 1024**4}
+
+
+def parse_size(size):
+    if size == '--':
+        return 0
+    number = size[:-1]
+    unit = size[-1]
+    return int(float(number) * units[unit])
+
 
 def add_gauge_metrics(metric, labels, value):
     if value != "n/a":

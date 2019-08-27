@@ -59,30 +59,30 @@ class PortDataLinkCounterCollector(object):
             GaugeMetricFamily("epc_port_rx_bytes_count",
                               "The number of bytes that were received.",
                               labels=["port", "status"]), GaugeMetricFamily(
-                "epc_port_rx_frames_status_count",
-                "The number of frames received with status.",
-                labels=["port", "size", "status"]),
+                                  "epc_port_rx_frames_status_count",
+                                  "The number of frames received with status.",
+                                  labels=["port", "size", "status"]),
             GaugeMetricFamily(
                 "epc_port_rx_pause",
                 "The number of correct received flow-control frames.",
                 labels=["port"]), GaugeMetricFamily(
-                "epc_port_rx_false_crs",
-                "The number of false carrier events detected.",
-                labels=["port"]),
+                    "epc_port_rx_false_crs",
+                    "The number of false carrier events detected.",
+                    labels=["port"]),
             GaugeMetricFamily(
                 "epc_port_rx_sym_err",
                 "The number of received frames during which physical (PHY) symbol errors were detected.",
                 labels=["port"]), HistogramMetricFamily(
-                "epc_port_rx_frames_by_size",
-                "The number of times that data was received according to "
-                "number of frames that comprised it.",
-                labels=["port"]), GaugeMetricFamily(
-                "epc_port_tx_frames_count",
-                "The number of frames transmitted.",
-                labels=["port", "type"]), GaugeMetricFamily(
-                "epc_port_tx_bytes_count",
-                "The number of bytes that were transmitted.",
-                labels=["port", "status"]),
+                    "epc_port_rx_frames_by_size",
+                    "The number of times that data was received according to "
+                    "number of frames that comprised it.",
+                    labels=["port"]), GaugeMetricFamily(
+                        "epc_port_tx_frames_count",
+                        "The number of frames transmitted.",
+                        labels=["port", "type"]), GaugeMetricFamily(
+                            "epc_port_tx_bytes_count",
+                            "The number of bytes that were transmitted.",
+                            labels=["port", "status"]),
             GaugeMetricFamily(
                 "epc_port_tx_pause",
                 "The number of correct transmitted flow-control frames.",

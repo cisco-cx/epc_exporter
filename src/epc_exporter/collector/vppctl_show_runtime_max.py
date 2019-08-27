@@ -57,8 +57,8 @@ class VppctlShowRuntimeMaxCollector(object):
             thread_name = row[field_thread_name]
             for name, max_node_clocks, vectors_at_max, max_clocks, avg_clocks, avg_vectors_per_clock in zip(
                     row[field_name], row[field_max_node_clocks],
-                row[field_vectors_at_max], row[field_max_clocks],
-                row[field_avg_clocks], row[field_avg_vectors_per_clock]):
+                    row[field_vectors_at_max], row[field_max_clocks],
+                    row[field_avg_clocks], row[field_avg_vectors_per_clock]):
                 add_gauge_metrics(metrics[0], [thread_id, thread_name, name],
                                   float(max_node_clocks))
                 add_gauge_metrics(metrics[1], [thread_id, thread_name, name],

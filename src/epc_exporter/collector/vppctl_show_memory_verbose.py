@@ -2,7 +2,7 @@ import textfsm
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
-from collector.utils import add_gauge_metrics
+from collector.utils import add_gauge_metrics, parse_size
 from device import AbstractDevice
 
 field_thread_id = 0
@@ -60,12 +60,3 @@ class VppctlShowMemoryVerboseCollector(object):
             add_gauge_metrics(metrics[3], [thread_id, thread_name],
                               parse_size(row[field_memory_free]))
         return metrics
-
-
-units = {"B": 1, "K": 1024, "M": 1024 ** 2, "G": 1024 ** 3, "T": 1024 ** 4}
-
-
-def parse_size(size):
-    number = size[:-1]
-    unit = size[-1]
-    return int(float(number) * units[unit])

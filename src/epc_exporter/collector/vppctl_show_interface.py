@@ -49,7 +49,7 @@ class VppctlShowInterfaceCollector(object):
         for row in rows:
             interface = row[field_interface]
             add_gauge_metrics(metrics[0], [interface], 1 if
-            row[field_state] == "up" else 0)
+                              row[field_state] == "up" else 0)
             add_gauge_metrics(metrics[1], [interface, "l3"],
                               float(row[field_mtu_l3]))
             add_gauge_metrics(metrics[1], [interface, "ip4"],
