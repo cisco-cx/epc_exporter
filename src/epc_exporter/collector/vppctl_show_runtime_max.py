@@ -16,9 +16,12 @@ field_avg_vectors_per_clock = 7
 
 
 class VppctlShowRuntimeMaxCollector(object):
-
-    def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
-        with open(template_dir + "/vppctl_show_runtime_max.template", "r") as template:
+    def __init__(self,
+                 template_dir: str,
+                 device: AbstractDevice,
+                 registry=REGISTRY):
+        with open(template_dir + "/vppctl_show_runtime_max.template",
+                  "r") as template:
             self._parser = textfsm.TextFSM(template)
 
         self._device = device
@@ -32,15 +35,20 @@ class VppctlShowRuntimeMaxCollector(object):
         rows = self._parser.ParseText(output)
 
         metrics = [
-            GaugeMetricFamily("epc_vppctl_runtime_max_node_clocks", "max node clocks by thread",
+            GaugeMetricFamily("epc_vppctl_runtime_max_node_clocks",
+                              "max node clocks by thread",
                               labels=["thread_id", "thread_name", "name"]),
-            GaugeMetricFamily("epc_vppctl_runtime_vectors_at_max", "vectors at max by thread",
+            GaugeMetricFamily("epc_vppctl_runtime_vectors_at_max",
+                              "vectors at max by thread",
                               labels=["thread_id", "thread_name", "name"]),
-            GaugeMetricFamily("epc_vppctl_runtime_max_clocks", "max clocks by thread",
+            GaugeMetricFamily("epc_vppctl_runtime_max_clocks",
+                              "max clocks by thread",
                               labels=["thread_id", "thread_name", "name"]),
-            GaugeMetricFamily("epc_vppctl_runtime_avg_clocks", "avg clocks by thread",
+            GaugeMetricFamily("epc_vppctl_runtime_avg_clocks",
+                              "avg clocks by thread",
                               labels=["thread_id", "thread_name", "name"]),
-            GaugeMetricFamily("epc_vppctl_runtime_avg_vectors_per_clock", "avg vector per clock by thread",
+            GaugeMetricFamily("epc_vppctl_runtime_avg_vectors_per_clock",
+                              "avg vector per clock by thread",
                               labels=["thread_id", "thread_name", "name"]),
         ]
 
@@ -49,12 +57,16 @@ class VppctlShowRuntimeMaxCollector(object):
             thread_name = row[field_thread_name]
             for name, max_node_clocks, vectors_at_max, max_clocks, avg_clocks, avg_vectors_per_clock in zip(
                     row[field_name], row[field_max_node_clocks],
-                    row[field_vectors_at_max],
-                    row[field_max_clocks], row[field_avg_clocks],
-                    row[field_avg_vectors_per_clock]):
-                add_gauge_metrics(metrics[0], [thread_id, thread_name, name], float(max_node_clocks))
-                add_gauge_metrics(metrics[1], [thread_id, thread_name, name], float(vectors_at_max))
-                add_gauge_metrics(metrics[2], [thread_id, thread_name, name], float(max_clocks))
-                add_gauge_metrics(metrics[3], [thread_id, thread_name, name], float(avg_clocks))
-                add_gauge_metrics(metrics[4], [thread_id, thread_name, name], float(avg_vectors_per_clock))
+                row[field_vectors_at_max], row[field_max_clocks],
+                row[field_avg_clocks], row[field_avg_vectors_per_clock]):
+                add_gauge_metrics(metrics[0], [thread_id, thread_name, name],
+                                  float(max_node_clocks))
+                add_gauge_metrics(metrics[1], [thread_id, thread_name, name],
+                                  float(vectors_at_max))
+                add_gauge_metrics(metrics[2], [thread_id, thread_name, name],
+                                  float(max_clocks))
+                add_gauge_metrics(metrics[3], [thread_id, thread_name, name],
+                                  float(avg_clocks))
+                add_gauge_metrics(metrics[4], [thread_id, thread_name, name],
+                                  float(avg_vectors_per_clock))
         return metrics

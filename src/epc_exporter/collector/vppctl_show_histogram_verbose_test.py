@@ -9,7 +9,8 @@ from device import TestDevice
 class VppCtlShowHistogramVerboseTestCase(unittest.TestCase):
     def test_parsing(self):
         registry = CollectorRegistry()
-        collector = VppctlShowHistogramVerboseCollector("templates", TestDevice("test/data"), registry)
+        collector = VppctlShowHistogramVerboseCollector(
+            "templates", TestDevice("test/data"), registry)
 
         collector.collect()
 

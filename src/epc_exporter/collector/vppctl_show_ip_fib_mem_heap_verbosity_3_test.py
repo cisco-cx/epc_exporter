@@ -9,7 +9,8 @@ from device import TestDevice
 class VppctlShowIPFibMemHeapTestCase(unittest.TestCase):
     def test_parsing(self):
         registry = CollectorRegistry()
-        collector = VppctlShowIPFibMemHeapCollector("templates", TestDevice("test/data"), registry)
+        collector = VppctlShowIPFibMemHeapCollector(
+            "templates", TestDevice("test/data"), registry)
 
         collector.collect()
 

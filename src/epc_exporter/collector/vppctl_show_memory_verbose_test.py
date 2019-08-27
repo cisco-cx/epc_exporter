@@ -9,7 +9,8 @@ from device import TestDevice
 class VppctlShowMemoryVerboseTestCase(unittest.TestCase):
     def test_parsing(self):
         registry = CollectorRegistry()
-        collector = VppctlShowMemoryVerboseCollector("templates", TestDevice("test/data"), registry)
+        collector = VppctlShowMemoryVerboseCollector(
+            "templates", TestDevice("test/data"), registry)
 
         collector.collect()
 

@@ -12,9 +12,13 @@ field_vrf = 4
 
 
 class VppctlShowIPFibMemHeapCollector(object):
-
-    def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
-        with open(template_dir + "/vppctl_show_ip_fib_mem_heap-verbosity_3.template", "r") as template:
+    def __init__(self,
+                 template_dir: str,
+                 device: AbstractDevice,
+                 registry=REGISTRY):
+        with open(template_dir +
+                  "/vppctl_show_ip_fib_mem_heap-verbosity_3.template",
+                  "r") as template:
             self._parser = textfsm.TextFSM(template)
 
         self._device = device
@@ -28,10 +32,15 @@ class VppctlShowIPFibMemHeapCollector(object):
         rows = self._parser.ParseText(output)
 
         metrics = [
-            GaugeMetricFamily("epc_vppctl_ip_fib_heap_memory_total_bytes", "ip fib heap memory total bytes"),
-            GaugeMetricFamily("epc_vppctl_ip_fib_heap_memory_used_bytes", "ip fib heap memory used bytes"),
-            GaugeMetricFamily("epc_vppctl_ip_fib_heap_memory_free_bytes", "ip fib heap memory free bytes"),
-            GaugeMetricFamily("epc_vppctl_ip_fib_vrf_status", "ip fib vrf status", labels=["vrf"]),
+            GaugeMetricFamily("epc_vppctl_ip_fib_heap_memory_total_bytes",
+                              "ip fib heap memory total bytes"),
+            GaugeMetricFamily("epc_vppctl_ip_fib_heap_memory_used_bytes",
+                              "ip fib heap memory used bytes"),
+            GaugeMetricFamily("epc_vppctl_ip_fib_heap_memory_free_bytes",
+                              "ip fib heap memory free bytes"),
+            GaugeMetricFamily("epc_vppctl_ip_fib_vrf_status",
+                              "ip fib vrf status",
+                              labels=["vrf"]),
         ]
 
         if len(rows) == 0:

@@ -9,7 +9,8 @@ from device import TestDevice
 class VppctlShowInterfaceTestCase(unittest.TestCase):
     def test_parsing(self):
         registry = CollectorRegistry()
-        collector = VppctlShowInterfaceCollector("templates", TestDevice("test/data"), registry)
+        collector = VppctlShowInterfaceCollector(
+            "templates", TestDevice("test/data"), registry)
 
         collector.collect()
 

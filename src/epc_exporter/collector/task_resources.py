@@ -21,8 +21,10 @@ field_total_files_usage = 12
 
 
 class TaskResourceCollector(object):
-
-    def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
+    def __init__(self,
+                 template_dir: str,
+                 device: AbstractDevice,
+                 registry=REGISTRY):
         template = open(template_dir + "/show_task_resources.template", "r")
         self._parser = textfsm.TextFSM(template)
 
@@ -36,40 +38,60 @@ class TaskResourceCollector(object):
         rows = self._parser.ParseText(output)
 
         metrics = [
-            GaugeMetricFamily("epc_task_cpu_used_percent", "task cpu used percent",
+            GaugeMetricFamily("epc_task_cpu_used_percent",
+                              "task cpu used percent",
                               labels=["cpu", "facility", "instance"]),
-            GaugeMetricFamily("epc_task_cpu_alloc_percent", "task cpu used percent",
+            GaugeMetricFamily("epc_task_cpu_alloc_percent",
+                              "task cpu used percent",
                               labels=["cpu", "facility", "instance"]),
-            GaugeMetricFamily("epc_task_memory_used_bytes", "task memory used",
+            GaugeMetricFamily("epc_task_memory_used_bytes",
+                              "task memory used",
                               labels=["cpu", "facility", "instance"]),
-            GaugeMetricFamily("epc_task_memory_alloc_bytes", "task memory allocated",
+            GaugeMetricFamily("epc_task_memory_alloc_bytes",
+                              "task memory allocated",
                               labels=["cpu", "facility", "instance"]),
-            GaugeMetricFamily("epc_task_files_used", "task files used",
+            GaugeMetricFamily("epc_task_files_used",
+                              "task files used",
                               labels=["cpu", "facility", "instance"]),
-            GaugeMetricFamily("epc_task_files_alloc", "task files allocated",
+            GaugeMetricFamily("epc_task_files_alloc",
+                              "task files allocated",
                               labels=["cpu", "facility", "instance"]),
-            GaugeMetricFamily("epc_task_total_processes_count", "total task process count"),
-            GaugeMetricFamily("epc_task_total_cpu_used_percent", "total task cpu usage in percent"),
-            GaugeMetricFamily("epc_task_total_mem_used_bytes", "total task memory usage in bytes"),
-            GaugeMetricFamily("epc_task_total_files_used", "total task files used"),
+            GaugeMetricFamily("epc_task_total_processes_count",
+                              "total task process count"),
+            GaugeMetricFamily("epc_task_total_cpu_used_percent",
+                              "total task cpu usage in percent"),
+            GaugeMetricFamily("epc_task_total_mem_used_bytes",
+                              "total task memory usage in bytes"),
+            GaugeMetricFamily("epc_task_total_files_used",
+                              "total task files used"),
         ]
 
         for row in rows[:-1]:
             if row[field_cpu] == '':
                 continue
             labels = [row[field_cpu], row[field_facility], row[field_instance]]
-            add_gauge_metrics(metrics[0], labels, parse_percent(row[field_cpu_used]))
-            add_gauge_metrics(metrics[1], labels, parse_percent(row[field_cpu_alloc]))
-            add_gauge_metrics(metrics[2], labels, parse_size(row[field_mem_used]))
-            add_gauge_metrics(metrics[3], labels, parse_size(row[field_mem_alloc]))
-            add_gauge_metrics(metrics[4], labels, parse_float(row[field_files_used]))
-            add_gauge_metrics(metrics[5], labels, parse_float(row[field_files_alloc]))
+            add_gauge_metrics(metrics[0], labels,
+                              parse_percent(row[field_cpu_used]))
+            add_gauge_metrics(metrics[1], labels,
+                              parse_percent(row[field_cpu_alloc]))
+            add_gauge_metrics(metrics[2], labels,
+                              parse_size(row[field_mem_used]))
+            add_gauge_metrics(metrics[3], labels,
+                              parse_size(row[field_mem_alloc]))
+            add_gauge_metrics(metrics[4], labels,
+                              parse_float(row[field_files_used]))
+            add_gauge_metrics(metrics[5], labels,
+                              parse_float(row[field_files_alloc]))
 
         if len(rows) > 0:
-            add_gauge_metrics(metrics[6], [], parse_float(rows[-1][field_total_process_count]))
-            add_gauge_metrics(metrics[7], [], parse_percent(rows[-1][field_total_cpu_usage]))
-            add_gauge_metrics(metrics[8], [], parse_size(rows[-1][field_total_mem_usage]))
-            add_gauge_metrics(metrics[9], [], parse_float(rows[-1][field_total_files_usage]))
+            add_gauge_metrics(metrics[6], [],
+                              parse_float(rows[-1][field_total_process_count]))
+            add_gauge_metrics(metrics[7], [],
+                              parse_percent(rows[-1][field_total_cpu_usage]))
+            add_gauge_metrics(metrics[8], [],
+                              parse_size(rows[-1][field_total_mem_usage]))
+            add_gauge_metrics(metrics[9], [],
+                              parse_float(rows[-1][field_total_files_usage]))
         return metrics
 
 

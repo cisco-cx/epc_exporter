@@ -9,10 +9,14 @@ from collector.vppctl_show_runtime_max_test import VppctlShowRuntimeMaxTestCase
 def create_suite():
     test_suite = unittest.TestSuite()
     loader = unittest.defaultTestLoader
-    test_suite.addTest(loader.loadTestsFromTestCase(VppCtlShowHistogramVerboseTestCase))
-    test_suite.addTest(loader.loadTestsFromTestCase(VppctlShowIPFibMemHeapTestCase))
-    test_suite.addTest(loader.loadTestsFromTestCase(VppctlShowMemoryVerboseTestCase))
-    test_suite.addTest(loader.loadTestsFromTestCase(VppctlShowRuntimeMaxTestCase))
+    test_suite.addTest(loader.loadTestsFromTestCase(
+        VppCtlShowHistogramVerboseTestCase))
+    test_suite.addTest(loader.loadTestsFromTestCase(
+        VppctlShowIPFibMemHeapTestCase))
+    test_suite.addTest(loader.loadTestsFromTestCase(
+        VppctlShowMemoryVerboseTestCase))
+    test_suite.addTest(loader.loadTestsFromTestCase(
+        VppctlShowRuntimeMaxTestCase))
     return test_suite
 
 

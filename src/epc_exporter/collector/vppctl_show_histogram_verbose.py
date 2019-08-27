@@ -25,15 +25,23 @@ field_total_value = 16
 field_min_value = 17
 field_max_value = 18
 
-_time_multiplier = {'cl': 1 / 10 ** 10, 'ns': 1 / 10 ** 9, 'us': 1 / 10 ** 6, 'ms': 1 / 10 ** 3, 's': 1, 'm': 60,
+_time_multiplier = {'cl': 1 / 10 ** 10,
+                    'ns': 1 / 10 ** 9,
+                    'us': 1 / 10 ** 6,
+                    'ms': 1 / 10 ** 3,
+                    's': 1,
+                    'm': 60,
                     'h': 60 * 60,
                     'd': 60 * 60 * 24}
 
 
 class VppctlShowHistogramVerboseCollector(object):
-
-    def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
-        with  open(template_dir + "/vppctl_show_histogram_verbose.template", "r") as template:
+    def __init__(self,
+                 template_dir: str,
+                 device: AbstractDevice,
+                 registry=REGISTRY):
+        with open(template_dir + "/vppctl_show_histogram_verbose.template",
+                  "r") as template:
             self._parser = textfsm.TextFSM(template)
 
         self._device = device
@@ -49,13 +57,16 @@ class VppctlShowHistogramVerboseCollector(object):
         if len(rows) == 0:
             return []
 
-        histogramMetrics = HistogramMetricFamily("epc_vppctl_performance", "vppctl performance metrics.",
-                                                 labels=["dataset", "process", "index"])
+        histogramMetrics = HistogramMetricFamily(
+            "epc_vppctl_performance",
+            "vppctl performance metrics.",
+            labels=["dataset", "process", "index"])
 
         for row in rows:
             buckets = []
             sample_acc = 0
-            for bs, b, bu, samples in zip(row[field_symbol], row[field_bucket], row[field_bucket_unit],
+            for bs, b, bu, samples in zip(row[field_symbol], row[field_bucket],
+                                          row[field_bucket_unit],
                                           row[field_bucket_samples]):
                 if bs == '>':
                     b = INF
@@ -64,10 +75,14 @@ class VppctlShowHistogramVerboseCollector(object):
                 else:
                     b = float(b)
                 sample_acc += float(samples)
-                buckets.append([floatToGoString(b * _time_multiplier[bu]), sample_acc])
+                buckets.append([floatToGoString(b * _time_multiplier[bu]),
+                                sample_acc])
 
-            histogramMetrics.add_metric(labels=[row[field_data_set], row[field_process], row[field_index]],
-                                        buckets=buckets, sum_value=(
-                        float(row[field_total_dt]) * _time_multiplier[row[field_total_dt_unit]]))
+            histogramMetrics.add_metric(
+                labels=[row[field_data_set], row[field_process], row[
+                    field_index]],
+                buckets=buckets,
+                sum_value=(float(row[field_total_dt]) * _time_multiplier[row[
+                    field_total_dt_unit]]))
 
         return [histogramMetrics]

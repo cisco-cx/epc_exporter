@@ -9,7 +9,8 @@ from device import TestDevice
 class VppctlShowRuntimeMaxTestCase(unittest.TestCase):
     def test_parsing(self):
         registry = CollectorRegistry()
-        collector = VppctlShowRuntimeMaxCollector("templates", TestDevice("test/data"), registry)
+        collector = VppctlShowRuntimeMaxCollector(
+            "templates", TestDevice("test/data"), registry)
 
         collector.collect()
 

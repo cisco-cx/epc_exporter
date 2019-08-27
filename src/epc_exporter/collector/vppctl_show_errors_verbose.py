@@ -25,9 +25,12 @@ field_index = 5
 
 
 class VppctlShowErrorsCollector(object):
-
-    def __init__(self, template_dir: str, device: AbstractDevice, registry=REGISTRY):
-        template = open(template_dir + "/vppctl_show_errors_verbose.template", "r")
+    def __init__(self,
+                 template_dir: str,
+                 device: AbstractDevice,
+                 registry=REGISTRY):
+        template = open(template_dir + "/vppctl_show_errors_verbose.template",
+                        "r")
         self._parser = textfsm.TextFSM(template)
 
         self._device = device
@@ -44,9 +47,12 @@ class VppctlShowErrorsCollector(object):
             return []
 
         metrics = [
-            CounterMetricFamily("epc_vppctl_thread_errors_count", "vppctl error counts by thread.",
-                                labels=["thread", "function", "node", "reason", "index"]),
-            CounterMetricFamily("epc_vppctl_total_errors_count", "vppctl total error counts.",
+            CounterMetricFamily(
+                "epc_vppctl_thread_errors_count",
+                "vppctl error counts by thread.",
+                labels=["thread", "function", "node", "reason", "index"]),
+            CounterMetricFamily("epc_vppctl_total_errors_count",
+                                "vppctl total error counts.",
                                 labels=["node", "reason", "index"])
         ]
 
@@ -54,13 +60,18 @@ class VppctlShowErrorsCollector(object):
         for row in rows[:-1]:
             thread_id = row[field_thread_id]
             thread_name = row[field_thread_name]
-            for node, reason, index, count in zip(row[field_node], row[field_error_reason], row[field_index],
-                                                  row[field_error_count]):
-                add_gauge_metrics(thread_err_count_metrics, [thread_id, thread_name, node, reason, index], float(count))
+            for node, reason, index, count in zip(
+                row[field_node], row[field_error_reason], row[field_index],
+                row[field_error_count]):
+                add_gauge_metrics(thread_err_count_metrics,
+                                  [thread_id, thread_name, node, reason,
+                                   index], float(count))
 
         total_err_count_metrics = metrics[1]
         row = rows[-1]
-        for node, reason, index, count in zip(row[field_node], row[field_error_reason], row[field_index],
-                                              row[field_error_count]):
-            add_gauge_metrics(total_err_count_metrics, [node, reason, index], float(count))
+        for node, reason, index, count in zip(
+            row[field_node], row[field_error_reason], row[field_index],
+            row[field_error_count]):
+            add_gauge_metrics(total_err_count_metrics, [node, reason, index],
+                              float(count))
         return metrics

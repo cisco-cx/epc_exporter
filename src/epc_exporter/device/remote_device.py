@@ -7,7 +7,6 @@ PROMPT = '.*# '
 
 
 class RemoteDevice(AbstractDevice):
-
     def __init__(self, hostname, username, password, test_password=None):
         self._hostname = hostname
         self._username = username
@@ -20,7 +19,9 @@ class RemoteDevice(AbstractDevice):
         super().__init__()
 
     def start_session(self):
-        self.client.connect(hostname=self._hostname, username=self._username, password=self._password)
+        self.client.connect(hostname=self._hostname,
+                            username=self._username,
+                            password=self._password)
 
         interact = SSHClientInteraction(self.client, timeout=10, display=True)
         interact.expect(PROMPT)
@@ -46,7 +47,6 @@ class RemoteDevice(AbstractDevice):
     def exec(self, command: str) -> str:
         if self._session is None:
             return ""
-
         '''send command'''
         self._session.send(command)
         self._session.expect(PROMPT)
