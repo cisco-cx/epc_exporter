@@ -9,19 +9,24 @@ fmt: yapf lint ## format code
 
 .PHONY: yapf
 yapf:
-	docker run --rm -v $$(pwd):/tmp --entrypoint sh tobegit3hub/yapf-docker -c "yapf -i \$$(find /tmp/src/epc_exporter -type f -name '*.py')"
+	docker run --rm -v $$(pwd):/tmp --entrypoint sh tobegit3hub/yapf-docker \
+		-c "yapf -i \$$(find /tmp/src/epc_exporter -type f -name '*.py')"
 
 .PHONY: lint
 lint: pylint flake8 ## lint code
 
 .PHONY: pylint
 pylint:
-	docker run --rm -v $$(pwd)/src/epc_exporter:/code/epc_exporter -v $$(pwd)/.pylintrc:/code/.pylintrc -w /code -e "PYTHONPATH=/code/epc_exporter" clburlison/pylint \
-		pylint --disable=import-error,too-few-public-methods --ignore-patterns=.*_test.* epc_exporter
+	docker run --rm -v $$(pwd)/src/epc_exporter:/code/epc_exporter \
+	    -v $$(pwd)/.pylintrc:/code/.pylintrc -w /code \
+	    -e "PYTHONPATH=/code/epc_exporter" clburlison/pylint \
+		pylint --disable=import-error,too-few-public-methods \
+		--ignore-patterns=.*_test.* epc_exporter
 
 .PHONY: flake8
 flake8:
-	docker run --rm -v $$(pwd)/src:/code --entrypoint sh alpine/flake8:3.5.0 -c "flake8  \$$(find /code/epc_exporter -type f -name '*.py')"
+	docker run --rm -v $$(pwd)/src:/code --entrypoint sh alpine/flake8:3.5.0 \
+		-c "flake8  \$$(find /code/epc_exporter -type f -name '*.py')"
 
 .PHONY: dep-freeze
 dep-freeze: ## freeze requirements.txt
