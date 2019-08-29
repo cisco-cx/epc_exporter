@@ -1,27 +1,30 @@
-import textfsm
+"""
+Collects show port utilization table command and parses it
+"""
+
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
+from collector.abstract_command_collector import AbstractCommandCollector
 from device import AbstractDevice
 
 
-class PortUtilizationCollector(object):
+class PortUtilizationCollector(AbstractCommandCollector):
+    """ Collector for show port utilization table command """
+
     def __init__(self,
                  template_dir: str,
                  device: AbstractDevice,
                  registry=REGISTRY):
-        template = open(template_dir + "/show_port_utilization_table.template",
-                        "r")
-
-        self._parser = textfsm.TextFSM(template)
-
-        self._device = device
-
-        if registry:
-            registry.register(self)
+        super().__init__(
+            template_dir + "/show_port_utilization_table.template", device,
+            registry)
 
     def collect(self):
-
+        """
+        collect method collects the command output from device and
+        return the metrics
+        """
         output = self._device.exec("show port utilization table")
         rows = self._parser.ParseText(output)
 
@@ -47,7 +50,8 @@ class PortUtilizationCollector(object):
         ]
 
         for row in rows:
-            for fi in range(6):
-                metrics[fi].add_metric(labels=[row[0]], value=row[fi + 1])
+            for field_index in range(6):
+                metrics[field_index].add_metric(labels=[row[0]],
+                                                value=row[field_index + 1])
 
         return metrics

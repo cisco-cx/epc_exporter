@@ -1,64 +1,72 @@
-import textfsm
+"""
+Collects vppctl "show runtime max" command and parses it
+"""
+
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
+from collector.abstract_command_collector import AbstractCommandCollector
 from collector.utils import add_gauge_metrics
 from device import AbstractDevice
 
-field_thread_id = 0
-field_thread_name = 1
-field_name = 2
-field_max_node_clocks = 3
-field_vectors_at_max = 4
-field_max_clocks = 5
-field_avg_clocks = 6
-field_avg_vectors_per_clock = 7
+FIELD_THREAD_ID = 0
+FIELD_THREAD_NAME = 1
+FIELD_NAME = 2
+FIELD_MAX_NODE_CLOCKS = 3
+FIELD_VECTORS_AT_MAX = 4
+FIELD_MAX_CLOCKS = 5
+FIELD_AVG_CLOCKS = 6
+FIELD_AVG_VECTORS_PER_CLOCK = 7
 
 
-class VppctlShowRuntimeMaxCollector(object):
+class VppctlShowRuntimeMaxCollector(AbstractCommandCollector):
+    """ Collector for vppctl "show runtime max" command """
+
     def __init__(self,
                  template_dir: str,
                  device: AbstractDevice,
                  registry=REGISTRY):
-        with open(template_dir + "/vppctl_show_runtime_max.template",
-                  "r") as template:
-            self._parser = textfsm.TextFSM(template)
-
-        self._device = device
-
-        if registry:
-            registry.register(self)
+        super().__init__(template_dir + "/vppctl_show_runtime_max.template",
+                         device, registry)
 
     def collect(self):
+        """ collect method collects the command output from device and
+            return the metrics
+        """
         self._device.enable_test_commands()
         output = self._device.exec('vppctl "show runtime max"')
         rows = self._parser.ParseText(output)
 
+        labels = ["thread_id", "thread_name", "name"]
         metrics = [
             GaugeMetricFamily("epc_vppctl_runtime_max_node_clocks",
                               "max node clocks by thread",
-                              labels=["thread_id", "thread_name", "name"]),
+                              labels=labels),
             GaugeMetricFamily("epc_vppctl_runtime_vectors_at_max",
                               "vectors at max by thread",
-                              labels=["thread_id", "thread_name", "name"]),
+                              labels=labels),
             GaugeMetricFamily("epc_vppctl_runtime_max_clocks",
                               "max clocks by thread",
-                              labels=["thread_id", "thread_name", "name"]),
+                              labels=labels),
             GaugeMetricFamily("epc_vppctl_runtime_avg_clocks",
                               "avg clocks by thread",
-                              labels=["thread_id", "thread_name", "name"]),
+                              labels=labels),
             GaugeMetricFamily("epc_vppctl_runtime_avg_vectors_per_clock",
                               "avg vector per clock by thread",
-                              labels=["thread_id", "thread_name", "name"]),
+                              labels=labels),
         ]
 
         for row in rows:
-            thread_id = row[field_thread_id]
-            thread_name = row[field_thread_name]
-            for name, max_node_clocks, vectors_at_max, max_clocks, avg_clocks, avg_vectors_per_clock in zip(
-                    row[field_name], row[field_max_node_clocks],
-                    row[field_vectors_at_max], row[field_max_clocks],
-                    row[field_avg_clocks], row[field_avg_vectors_per_clock]):
+            thread_id = row[FIELD_THREAD_ID]
+            thread_name = row[FIELD_THREAD_NAME]
+            for name, max_node_clocks, vectors_at_max, max_clocks, \
+                avg_clocks, avg_vectors_per_clock in zip(
+                        row[FIELD_NAME],
+                        row[FIELD_MAX_NODE_CLOCKS],
+                        row[FIELD_VECTORS_AT_MAX],
+                        row[FIELD_MAX_CLOCKS],
+                        row[FIELD_AVG_CLOCKS],
+                        row[FIELD_AVG_VECTORS_PER_CLOCK]):
                 add_gauge_metrics(metrics[0], [thread_id, thread_name, name],
                                   float(max_node_clocks))
                 add_gauge_metrics(metrics[1], [thread_id, thread_name, name],

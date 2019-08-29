@@ -1,39 +1,44 @@
-import textfsm
+"""
+Collects show task resources command and parses it
+"""
+
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
+from collector.abstract_command_collector import AbstractCommandCollector
 from collector.utils import add_gauge_metrics, parse_size
 from device import AbstractDevice
 
-field_cpu = 0
-field_facility = 1
-field_instance = 2
-field_cpu_used = 3
-field_cpu_alloc = 4
-field_mem_used = 5
-field_mem_alloc = 6
-field_files_used = 7
-field_files_alloc = 8
-field_total_process_count = 9
-field_total_cpu_usage = 10
-field_total_mem_usage = 11
-field_total_files_usage = 12
+FIELD_CPU = 0
+FIELD_FACILITY = 1
+FIELD_INSTANCE = 2
+FIELD_CPU_USED = 3
+FIELD_CPU_ALLOC = 4
+FIELD_MEM_USED = 5
+FIELD_MEM_ALLOC = 6
+FIELD_FILES_USED = 7
+FIELD_FILES_ALLOC = 8
+FIELD_TOTAL_PROCESS_COUNT = 9
+FIELD_TOTAL_CPU_USAGE = 10
+FIELD_TOTAL_MEM_USAGE = 11
+FIELD_TOTAL_FILES_USAGE = 12
 
 
-class TaskResourceCollector(object):
+class TaskResourceCollector(AbstractCommandCollector):
+    """ Collector for show task resources command """
+
     def __init__(self,
                  template_dir: str,
                  device: AbstractDevice,
                  registry=REGISTRY):
-        template = open(template_dir + "/show_task_resources.template", "r")
-        self._parser = textfsm.TextFSM(template)
-
-        self._device = device
-
-        if registry:
-            registry.register(self)
+        super().__init__(template_dir + "/show_task_resources.template",
+                         device, registry)
 
     def collect(self):
+        """
+        collect method collects the command output from device and
+        return the metrics
+        """
         output = self._device.exec("show task resources")
         rows = self._parser.ParseText(output)
 
@@ -67,35 +72,36 @@ class TaskResourceCollector(object):
         ]
 
         for row in rows[:-1]:
-            if row[field_cpu] == '':
+            if row[FIELD_CPU] == '':
                 continue
-            labels = [row[field_cpu], row[field_facility], row[field_instance]]
+            labels = [row[FIELD_CPU], row[FIELD_FACILITY], row[FIELD_INSTANCE]]
             add_gauge_metrics(metrics[0], labels,
-                              parse_percent(row[field_cpu_used]))
+                              parse_percent(row[FIELD_CPU_USED]))
             add_gauge_metrics(metrics[1], labels,
-                              parse_percent(row[field_cpu_alloc]))
+                              parse_percent(row[FIELD_CPU_ALLOC]))
             add_gauge_metrics(metrics[2], labels,
-                              parse_size(row[field_mem_used]))
+                              parse_size(row[FIELD_MEM_USED]))
             add_gauge_metrics(metrics[3], labels,
-                              parse_size(row[field_mem_alloc]))
+                              parse_size(row[FIELD_MEM_ALLOC]))
             add_gauge_metrics(metrics[4], labels,
-                              parse_float(row[field_files_used]))
+                              parse_float(row[FIELD_FILES_USED]))
             add_gauge_metrics(metrics[5], labels,
-                              parse_float(row[field_files_alloc]))
+                              parse_float(row[FIELD_FILES_ALLOC]))
 
-        if len(rows) > 0:
+        if rows:
             add_gauge_metrics(metrics[6], [],
-                              parse_float(rows[-1][field_total_process_count]))
+                              parse_float(rows[-1][FIELD_TOTAL_PROCESS_COUNT]))
             add_gauge_metrics(metrics[7], [],
-                              parse_percent(rows[-1][field_total_cpu_usage]))
+                              parse_percent(rows[-1][FIELD_TOTAL_CPU_USAGE]))
             add_gauge_metrics(metrics[8], [],
-                              parse_size(rows[-1][field_total_mem_usage]))
+                              parse_size(rows[-1][FIELD_TOTAL_MEM_USAGE]))
             add_gauge_metrics(metrics[9], [],
-                              parse_float(rows[-1][field_total_files_usage]))
+                              parse_float(rows[-1][FIELD_TOTAL_FILES_USAGE]))
         return metrics
 
 
 def parse_percent(size):
+    """parses string percent value to float, ignores -- as 0"""
     if size == '--':
         return 0
     number = size[:-1]
@@ -103,6 +109,7 @@ def parse_percent(size):
 
 
 def parse_float(val):
+    """parses string as float, ignores -- as 0"""
     if val == '--':
         return 0
     return float(val)

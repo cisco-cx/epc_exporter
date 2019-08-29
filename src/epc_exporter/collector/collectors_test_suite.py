@@ -1,9 +1,13 @@
 import unittest
 
-from collector.vppctl_show_histogram_verbose_test import VppCtlShowHistogramVerboseTestCase
-from collector.vppctl_show_ip_fib_mem_heap_verbosity_3_test import VppctlShowIPFibMemHeapTestCase
-from collector.vppctl_show_memory_verbose_test import VppctlShowMemoryVerboseTestCase
-from collector.vppctl_show_runtime_max_test import VppctlShowRuntimeMaxTestCase
+from collector.vppctl_show_histogram_verbose_test import (
+    VppCtlShowHistogramVerboseTestCase)
+from collector.vppctl_show_ip_fib_mem_heap_verbosity_3_test import (
+    VppctlShowIPFibMemHeapTestCase)
+from collector.vppctl_show_memory_verbose_test import (
+    VppctlShowMemoryVerboseTestCase)
+from collector.vppctl_show_runtime_max_test import (
+    VppctlShowRuntimeMaxTestCase)
 
 
 def create_suite():

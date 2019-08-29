@@ -1,3 +1,7 @@
+"""
+EPC collector module, collects the commands data from EPC and exposes them as
+Prometheus collectors.
+"""
 from prometheus_client import REGISTRY
 
 from device import AbstractDevice
@@ -9,7 +13,8 @@ from .task_resources import TaskResourceCollector
 from .vppctl_show_errors_verbose import VppctlShowErrorsCollector
 from .vppctl_show_histogram_verbose import VppctlShowHistogramVerboseCollector
 from .vppctl_show_interface import VppctlShowInterfaceCollector
-from .vppctl_show_ip_fib_mem_heap_verbosity_3 import VppctlShowIPFibMemHeapCollector
+from .vppctl_show_ip_fib_mem_heap_verbosity_3 import (
+    VppctlShowIPFibMemHeapCollector)
 from .vppctl_show_memory_verbose import VppctlShowMemoryVerboseCollector
 from .vppctl_show_runtime_max import VppctlShowRuntimeMaxCollector
 
@@ -19,12 +24,16 @@ __all__ = ['NPUUtilizationCollector', 'PortDataLinkCounterCollector',
            'VppctlShowHistogramVerboseCollector',
            'VppctlShowInterfaceCollector', 'VppctlShowIPFibMemHeapCollector',
            'VppctlShowMemoryVerboseCollector', 'VppctlShowRuntimeMaxCollector',
-           'registerCollectors']
+           'register_collectors']
 
 
-def registerCollectors(templates_path: str,
-                       device: AbstractDevice,
-                       registry=REGISTRY):
+def register_collectors(templates_path: str,
+                        device: AbstractDevice,
+                        registry=REGISTRY):
+    """
+    register all collectors with provided registry.
+    Collectors will use device instance to collect the command output
+    """
     NPUUtilizationCollector(templates_path, device, registry)
     PortUtilizationCollector(templates_path, device, registry)
     PortDataLinkCounterCollector(templates_path, device, registry)

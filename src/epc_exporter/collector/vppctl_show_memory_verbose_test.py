@@ -2,7 +2,8 @@ import unittest
 
 from prometheus_client import CollectorRegistry
 
-from collector.vppctl_show_memory_verbose import VppctlShowMemoryVerboseCollector
+from collector.vppctl_show_memory_verbose import (
+    VppctlShowMemoryVerboseCollector)
 from device import TestDevice
 
 

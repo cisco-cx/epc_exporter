@@ -1,39 +1,45 @@
-import textfsm
+"""
+Collects show port npu counters command and parses it
+"""
+
 from prometheus_client import REGISTRY
-from prometheus_client.metrics_core import GaugeMetricFamily, HistogramMetricFamily
+from prometheus_client.metrics_core import (GaugeMetricFamily,
+                                            HistogramMetricFamily)
 from prometheus_client.utils import INF
 
+from collector.abstract_command_collector import AbstractCommandCollector
 from collector.utils import add_gauge_metrics, add_histogram_metrics
 from device import AbstractDevice
 
-field_port = 0
-field_counter_name = 1
-field_rx_frames = 2
-field_rx_bytes = 3
-field_tx_frames = 4
-field_tx_bytes = 5
-field_rx_frames_by_size = 6
-field_rx_bytes_by_size = 7
-field_tx_frames_by_size = 8
-field_tx_bytes_by_size = 9
+FIELD_PORT = 0
+FIELD_COUNTER_NAME = 1
+FIELD_RX_FRAMES = 2
+FIELD_RX_BYTES = 3
+FIELD_TX_FRAMES = 4
+FIELD_TX_BYTES = 5
+FIELD_RX_FRAMES_BY_SIZE = 6
+FIELD_RX_BYTES_BY_SIZE = 7
+FIELD_TX_FRAMES_BY_SIZE = 8
+FIELD_TX_BYTES_BY_SIZE = 9
 
-_upper_bounds = [63, 127, 255, 511, 1023, 2047, 4095, 8191, INF]
+_UPPER_BOUNDS = [63, 127, 255, 511, 1023, 2047, 4095, 8191, INF]
 
 
-class PortNPUCounterCollector(object):
+class PortNPUCounterCollector(AbstractCommandCollector):
+    """ Collector for show port npu counters command """
+
     def __init__(self,
                  template_dir: str,
                  device: AbstractDevice,
                  registry=REGISTRY):
-        template = open(template_dir + "/show_port_npu_counters.template", "r")
-        self._parser = textfsm.TextFSM(template)
-
-        self._device = device
-
-        if registry:
-            registry.register(self)
+        super().__init__(template_dir + "/show_port_npu_counters.template",
+                         device, registry)
 
     def collect(self):
+        """
+        collect method collects the command output from device and
+        return the metrics
+        """
         output = self._device.exec("show port npu counters")
         rows = self._parser.ParseText(output)
 
@@ -47,12 +53,12 @@ class PortNPUCounterCollector(object):
         ]
 
         for row in rows:
-            port = row[field_port]
+            port = row[FIELD_PORT]
             counter_metric = metrics[0]
             for counter, rx_frames, rx_bytes, tx_frames, tx_bytes in zip(
-                    row[field_counter_name], row[field_rx_frames],
-                    row[field_rx_bytes], row[field_tx_frames],
-                    row[field_tx_bytes]):
+                    row[FIELD_COUNTER_NAME], row[FIELD_RX_FRAMES],
+                    row[FIELD_RX_BYTES], row[FIELD_TX_FRAMES],
+                    row[FIELD_TX_BYTES]):
                 add_gauge_metrics(counter_metric, [port, counter, "rx_frames"],
                                   rx_frames)
                 add_gauge_metrics(counter_metric, [port, counter, "rx_bytes"],
@@ -63,9 +69,9 @@ class PortNPUCounterCollector(object):
                                   tx_bytes)
 
             add_histogram_metrics(metrics[1], [port, "rx_frames"],
-                                  _upper_bounds, row[field_rx_frames_by_size],
-                                  sum(map(int, row[field_rx_bytes_by_size])))
+                                  _UPPER_BOUNDS, row[FIELD_RX_FRAMES_BY_SIZE],
+                                  sum(map(int, row[FIELD_RX_BYTES_BY_SIZE])))
             add_histogram_metrics(metrics[1], [port, "tx_frames"],
-                                  _upper_bounds, row[field_tx_frames_by_size],
-                                  sum(map(int, row[field_tx_bytes_by_size])))
+                                  _UPPER_BOUNDS, row[FIELD_TX_FRAMES_BY_SIZE],
+                                  sum(map(int, row[FIELD_TX_BYTES_BY_SIZE])))
         return metrics

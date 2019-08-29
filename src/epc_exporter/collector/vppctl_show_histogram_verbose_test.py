@@ -2,7 +2,8 @@ import unittest
 
 from prometheus_client import CollectorRegistry
 
-from collector.vppctl_show_histogram_verbose import VppctlShowHistogramVerboseCollector
+from collector.vppctl_show_histogram_verbose import (
+    VppctlShowHistogramVerboseCollector)
 from device import TestDevice
 
 

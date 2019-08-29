@@ -1,25 +1,29 @@
-import textfsm
+"""
+Collects show npu utilization table command and parses it
+"""
+
 from prometheus_client import REGISTRY
 from prometheus_client.core import GaugeMetricFamily
 
+from collector.abstract_command_collector import AbstractCommandCollector
 from device import AbstractDevice
 
 
-class NPUUtilizationCollector(object):
+class NPUUtilizationCollector(AbstractCommandCollector):
+    """ Collector for show npu utilization table command """
+
     def __init__(self,
                  template_dir: str,
                  device: AbstractDevice,
                  registry=REGISTRY):
-        template = open(template_dir + "/show_npu_utilization_table.template",
-                        "r")
-        self._parser = textfsm.TextFSM(template)
-
-        self._device = device
-
-        if registry:
-            registry.register(self)
+        super().__init__(template_dir + "/show_npu_utilization_table.template",
+                         device, registry)
 
     def collect(self):
+        """
+        collect method collects the command output from device and
+        return the metrics
+        """
         output = self._device.exec("show npu utilization table")
         rows = self._parser.ParseText(output)
 

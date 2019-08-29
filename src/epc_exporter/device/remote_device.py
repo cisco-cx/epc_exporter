@@ -1,3 +1,8 @@
+"""
+device module provides the remote device module.
+This device uses ssh to collect command outputs on the device
+"""
+
 from paramiko import SSHClient, WarningPolicy
 from paramiko_expect import SSHClientInteraction
 
@@ -7,6 +12,8 @@ PROMPT = '.*# '
 
 
 class RemoteDevice(AbstractDevice):
+    """ Remote device """
+
     def __init__(self, hostname, username, password, test_password=None):
         self._hostname = hostname
         self._username = username
@@ -47,7 +54,7 @@ class RemoteDevice(AbstractDevice):
     def exec(self, command: str) -> str:
         if self._session is None:
             return ""
-        '''send command'''
+        # send command
         self._session.send(command)
         self._session.expect(PROMPT)
 

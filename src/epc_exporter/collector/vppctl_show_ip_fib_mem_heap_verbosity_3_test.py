@@ -2,7 +2,8 @@ import unittest
 
 from prometheus_client import CollectorRegistry
 
-from collector.vppctl_show_ip_fib_mem_heap_verbosity_3 import VppctlShowIPFibMemHeapCollector
+from collector.vppctl_show_ip_fib_mem_heap_verbosity_3 import (
+    VppctlShowIPFibMemHeapCollector)
 from device import TestDevice
 
 

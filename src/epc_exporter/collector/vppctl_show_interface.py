@@ -1,35 +1,39 @@
-import textfsm
+"""
+Collects vppctl "show interface" command and parses it
+"""
+
 from prometheus_client import REGISTRY
 from prometheus_client.metrics_core import GaugeMetricFamily
 
+from collector.abstract_command_collector import AbstractCommandCollector
 from collector.utils import add_gauge_metrics
 from device import AbstractDevice
 
-field_interface = 0
-field_state = 1
-field_mtu_l3 = 2
-field_mtu_ip4 = 3
-field_mtu_ip6 = 4
-field_mtu_mpls = 5
-field_counter_name = 6
-field_counter_value = 7
+FIELD_INTERFACE = 0
+FIELD_STATE = 1
+FIELD_MTU_L3 = 2
+FIELD_MTU_IP4 = 3
+FIELD_MTU_IP6 = 4
+FIELD_MTU_MPLS = 5
+FIELD_COUNTER_NAME = 6
+FIELD_COUNTER_VALUE = 7
 
 
-class VppctlShowInterfaceCollector(object):
+class VppctlShowInterfaceCollector(AbstractCommandCollector):
+    """ Collector for vppctl "show interface" command """
+
     def __init__(self,
                  template_dir: str,
                  device: AbstractDevice,
                  registry=REGISTRY):
-        with open(template_dir + "/vppctl_show_interface.template",
-                  "r") as template:
-            self._parser = textfsm.TextFSM(template)
-
-        self._device = device
-
-        if registry:
-            registry.register(self)
+        super().__init__(template_dir + "/vppctl_show_interface.template",
+                         device, registry)
 
     def collect(self):
+        """
+        collect method collects the command output from device and
+        return the metrics
+        """
         self._device.enable_test_commands()
         output = self._device.exec('vppctl "show interface"')
         rows = self._parser.ParseText(output)
@@ -47,18 +51,18 @@ class VppctlShowInterfaceCollector(object):
         ]
 
         for row in rows:
-            interface = row[field_interface]
+            interface = row[FIELD_INTERFACE]
             add_gauge_metrics(metrics[0], [interface], 1 if
-                              row[field_state] == "up" else 0)
+                              row[FIELD_STATE] == "up" else 0)
             add_gauge_metrics(metrics[1], [interface, "l3"],
-                              float(row[field_mtu_l3]))
+                              float(row[FIELD_MTU_L3]))
             add_gauge_metrics(metrics[1], [interface, "ip4"],
-                              float(row[field_mtu_ip4]))
+                              float(row[FIELD_MTU_IP4]))
             add_gauge_metrics(metrics[1], [interface, "ip6"],
-                              float(row[field_mtu_ip6]))
+                              float(row[FIELD_MTU_IP6]))
             add_gauge_metrics(metrics[1], [interface, "mpls"],
-                              float(row[field_mtu_mpls]))
-            for name, value in zip(row[field_counter_name],
-                                   row[field_counter_value]):
+                              float(row[FIELD_MTU_MPLS]))
+            for name, value in zip(row[FIELD_COUNTER_NAME],
+                                   row[FIELD_COUNTER_VALUE]):
                 add_gauge_metrics(metrics[2], [interface, name], float(value))
         return metrics
