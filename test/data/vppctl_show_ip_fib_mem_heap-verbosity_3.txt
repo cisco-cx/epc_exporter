@@ -1,0 +1,12 @@
+Tuesday July 23 06:30:30 JST 2019
+ipv4-VRF:0 mtrie:333056 hash:3511
+ipv4-VRF:5000 mtrie:345152 hash:4883
+ipv4-VRF:1 mtrie:335744 hash:3510
+ipv4-VRF:2 mtrie:349184 hash:8475
+ipv4-VRF:3 mtrie:335744 hash:3510
+totals: mtrie:1698880 hash:23889 all:1722769
+mtrie heap:
+total: 32.06M, used: 2.20M, free: 29.86M, trimmable: 26.64M
+    free chunks 9 free fastbin blks 0
+    max total allocated 32.06M
+no traced allocations

@@ -1,0 +1,94 @@
+Counters for port 1/1
+        Counter             Rx Frames             Rx Bytes              Tx Frames            Tx Bytes
+---------------------- -------------------- -------------------- -------------------- --------------------
+Unicast                                   0                    0                    0                    0
+Multicast                                 0                    0                    0                    0
+Broadcast                                 0                    0                    0                    0
+IPv4 unicast                              0                    0                    0                    0
+IPv4 non-unicast                          0                    0                    0                    0
+Fragments received                        0                    0                  n/a                  n/a
+Packets reassembled                       0                    0                  n/a                  n/a
+Fragments to kernel                       0                    0                  n/a                  n/a
+HW error                                  0                    0                  n/a                  n/a
+Port non-operational                      0                    0                    0                    0
+SRC MAC is multicast                      0                    0                  n/a                  n/a
+Unknown VLAN tag                          0                    0                  n/a                  n/a
+Other protocols                           0                    0                  n/a                  n/a
+Not IPv4                                  0                    0                  n/a                  n/a
+Bad IPv4 header                           0                    0                  n/a                  n/a
+IPv4 MRU exceeded                         0                    0                  n/a                  n/a
+TCP tiny fragment                         0                    0                    0                    0
+No ACL match                              0                    0                    0                    0
+Filtered by ACL                           0                    0                    0                    0
+TTL expired                               0                    0                  n/a                  n/a
+Flow lookup twice                         0                    0                  n/a                  n/a
+Unknown IPv4 class                        0                    0                  n/a                  n/a
+Too short: IP                             0                    0                  n/a                  n/a
+Too short: ICMP                           0                    0                    0                    0
+Too short: IGMP                           0                    0                    0                    0
+Too short: TCP                            0                    0                    0                    0
+Too short: UDP                            0                    0                    0                    0
+Too short: IPIP                           0                    0                  n/a                  n/a
+Too short: GRE                            0                    0                  n/a                  n/a
+Too short: GRE key                        0                    0                  n/a                  n/a
+Don't frag discards                     n/a                  n/a                    0                    0
+Fragment packets                        n/a                  n/a                    0                    0
+Fragment fragments                      n/a                  n/a                    0                    0
+IPv4VlanMap dropped                       0                    0                  n/a                  n/a
+IPSec NATT keep alive                     0                    0                  n/a                  n/a
+Size    0 ..   63                         0                    0                    0                    0
+Size   64 ..  127                         0                    0                    0                    0
+Size  128 ..  255                         0                    0                    0                    0
+Size  256 ..  511                         0                    0                    0                    0
+Size  512 .. 1023                         0                    0                    0                    0
+Size 1024 .. 2047                         0                    0                    0                    0
+Size 2048 .. 4095                         0                    0                    0                    0
+Size 4096 .. 8191                         0                    0                    0                    0
+Size >= 8192                              0                    0                    0                    0
+Counters for port 1/10
+        Counter             Rx Frames             Rx Bytes              Tx Frames            Tx Bytes
+---------------------- -------------------- -------------------- -------------------- --------------------
+Unicast                                   0                    0                    0                    0
+Multicast                                 0                    0                    0                    0
+Broadcast                                 0                    0                    0                    0
+IPv4 unicast                              0                    0                    0                    0
+IPv4 non-unicast                          0                    0                    0                    0
+Fragments received                        0                    0                  n/a                  n/a
+Packets reassembled                       0                    0                  n/a                  n/a
+Fragments to kernel                       0                    0                  n/a                  n/a
+HW error                                  0                    0                  n/a                  n/a
+Port non-operational                      0                    0                    0                    0
+SRC MAC is multicast                      0                    0                  n/a                  n/a
+Unknown VLAN tag                          0                    0                  n/a                  n/a
+Other protocols                           0                    0                  n/a                  n/a
+Not IPv4                                  0                    0                  n/a                  n/a
+Bad IPv4 header                           0                    0                  n/a                  n/a
+IPv4 MRU exceeded                         0                    0                  n/a                  n/a
+TCP tiny fragment                         0                    0                    0                    0
+No ACL match                              0                    0                    0                    0
+Filtered by ACL                           0                    0                    0                    0
+TTL expired                               0                    0                  n/a                  n/a
+Flow lookup twice                         0                    0                  n/a                  n/a
+Unknown IPv4 class                        0                    0                  n/a                  n/a
+Too short: IP                             0                    0                  n/a                  n/a
+Too short: ICMP                           0                    0                    0                    0
+Too short: IGMP                           0                    0                    0                    0
+Too short: TCP                            0                    0                    0                    0
+Too short: UDP                            0                    0                    0                    0
+Too short: IPIP                           0                    0                  n/a                  n/a
+Too short: GRE                            0                    0                  n/a                  n/a
+Too short: GRE key                        0                    0                  n/a                  n/a
+Don't frag discards                     n/a                  n/a                    0                    0
+Fragment packets                        n/a                  n/a                    0                    0
+Fragment fragments                      n/a                  n/a                    0                    0
+IPv4VlanMap dropped                       0                    0                  n/a                  n/a
+IPSec NATT keep alive                     0                    0                  n/a                  n/a
+Size    0 ..   63                         0                    0                    0                    0
+Size   64 ..  127                         0                    0                    0                    0
+Size  128 ..  255                         0                    0                    0                    0
+Size  256 ..  511                         0                    0                    0                    0
+Size  512 .. 1023                         0                    0                    0                    0
+Size 1024 .. 2047                         0                    0                    0                    0
+Size 2048 .. 4095                         0                    0                    0                    0
+Size 4096 .. 8191                         0                    0                    0                    0
+Size >= 8192                              0                    0                    0                    0

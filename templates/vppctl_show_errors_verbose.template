@@ -1,0 +1,11 @@
+Value ThreadId (\d+)
+Value ThreadName (\w+)
+Value List Count (\d+)
+Value List Node ([a-zA-Z0-9-]+)
+Value List Reason (.*\b)
+Value List Index (\d+)
+
+Start
+  ^(Thread)|(Total) -> Continue.Record
+  ^Thread ${ThreadId} \(${ThreadName}\):
+  ^\s*${Count}\s+${Node}\s+${Reason}\s+${Index}

@@ -1,0 +1,13 @@
+Value Required ThreadId (\d+)
+Value Required ThreadName (\w+)
+Value Numa (\d+)
+Value TotalMemory (\d+\.\d+(G|M|K))
+Value UsedMemory (\d+\.\d+(G|M|K))
+Value FreeMemory (\d+\.\d+(G|M|K))
+Value TrimmableMemory (\d+\.\d+(G|M|K))
+
+Start
+  ^Thread \d+ \w+ -> Continue.Record
+  ^Thread ${ThreadId} ${ThreadName}
+  ^\s+numa ${Numa}
+  ^\s+total: ${TotalMemory}, used: ${UsedMemory}, free: ${FreeMemory}, trimmable: ${TrimmableMemory}

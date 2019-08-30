@@ -1,0 +1,16 @@
+Value Port (\d+/\d+)
+Value List Counter (.+\b)
+Value List RxFrames (\d+|(n/a))
+Value List RxBytes (\d+|(n/a))
+Value List TxFrames (\d+|(n/a))
+Value List TxBytes (\d+|(n/a))
+Value List RxSizeFrames (\d+|(n/a))
+Value List RxSizeBytes (\d+|(n/a))
+Value List TxSizeFrames (\d+|(n/a))
+Value List TxSizeBytes (\d+|(n/a))
+
+Start
+  ^Counters for port -> Continue.Record
+  ^Counters for port ${Port}
+  ^Size .* \s+ ${RxSizeFrames} \s+ ${RxSizeBytes} \s+ ${TxSizeFrames} \s+ ${TxSizeBytes}
+  ^${Counter} \s+ ${RxFrames} \s+ ${RxBytes} \s+ ${TxFrames} \s+ ${TxBytes}

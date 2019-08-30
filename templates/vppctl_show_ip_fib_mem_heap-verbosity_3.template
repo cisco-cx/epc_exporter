@@ -1,0 +1,9 @@
+Value TotalMemory (\d+\.\d+(G|M|K))
+Value UsedMemory (\d+\.\d+(G|M|K))
+Value FreeMemory (\d+\.\d+(G|M|K))
+Value TrimmableMemory (\d+\.\d+(G|M|K))
+Value List VRF (ip.*:\d+)
+
+Start
+  ^${VRF} mtrie:\d+ hash:\d+
+  ^total: ${TotalMemory}, used: ${UsedMemory}, free: ${FreeMemory}, trimmable: ${TrimmableMemory}

@@ -1,7 +1,11 @@
-Value Port  (\d+/\d+)
-Value List RxCurrent   (\d+)
-Value List TxCurrent   (\d+)
+Value Port (\d+/\d+)
+Value RxCurrent (\d+)
+Value TxCurrent (\d+)
+Value RxFiveMin (\d+)
+Value TxFiveMin (\d+)
+Value RxFifteenMin (\d+)
+Value TxFifteenMin (\d+)
 
 
 Start
-  ^${Port} .+ \s+ ${RxCurrent} \s+ ${TxCurrent} \s+ ${RxCurrent} \s+ ${TxCurrent} \s+ ${RxCurrent} \s+ ${TxCurrent} -> Record
+  ^\s${Port} .+ \s+ ${RxCurrent} \s+ ${TxCurrent} \s+ ${RxFiveMin} \s+ ${TxFiveMin} \s+ ${RxFifteenMin} \s+ ${TxFifteenMin} -> Record

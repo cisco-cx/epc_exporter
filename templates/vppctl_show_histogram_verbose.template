@@ -1,0 +1,31 @@
+Value Required DataSet (\w+-\w+)
+Value Required Process ([a-zA-z0-9-:/]+)
+Value Required Index (\d+)
+Value List Symbol ((>|<)?)
+Value List Bucket (\d+(\.\d+)?)
+Value List BucketUnit (d|h|m|s|ms|us|ns|cl)
+Value List Samples (\d+)
+Value List LastSampleTime (\d\d?\+\d{2}:\d{2}:\d{2}\.\d{6})
+Value List TotalVByBucket (\d+(\.\d+)?)
+Value List TotalVPerSample (\d+(\.\d+)?|-)
+Value TotalDT (\d+(\.\d+)?)
+Value TotalDTUnit (d|h|m|s|ms|us|ns|cl)
+Value MinDT (\d+(\.\d+)?)
+Value MinDTUnit (d|h|m|s|ms|us|ns|cl)
+Value MaxDT (\d+(\.\d+)?)
+Value MaxDTUnit (d|h|m|s|ms|us|ns|cl)
+Value TotalValue (\d+(\.\d+)?)
+Value MinValue (\d+(\.\d+)?)
+Value MaxValue (\d+(\.\d+)?)
+
+Start
+  ^(\w+-\w+) -> Continue.Record
+  ^${DataSet}-${Process} \(index ${Index}\)
+  ^${Symbol}\s*${Bucket}${BucketUnit}\s+${Samples}\s+${LastSampleTime}
+  ^${Symbol}\s*${Bucket}${BucketUnit}\s+${Samples}\s+${TotalVByBucket}\s+${TotalVPerSample}\s+${LastSampleTime}
+  ^Total dT\s+${TotalDT}${TotalDTUnit}
+  ^Tot dT,V\s+${TotalDT}${TotalDTUnit}\s+${TotalValue}
+  ^\s+Min dT\s+${MinDT}${MinDTUnit}
+  ^\s+Max dT\s+${MaxDT}${MaxDTUnit}
+  ^\s+Min V\s+${MinValue}
+  ^\s+Max V\s+${MaxValue}
