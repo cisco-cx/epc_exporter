@@ -54,10 +54,19 @@ class RemoteDevice(AbstractDevice):
     def exec(self, command: str) -> str:
         if self._session is None:
             return ""
+
+        if command.startswith("vppctl"):
+            self._session.send("debug shell")
+            self._session.expect(PROMPT)
+
         # send command
         self._session.send(command)
         self._session.expect(PROMPT)
 
         cmd_output_uname = self._session.current_output_clean
+
+        if command.startswith("vppctl"):
+            self._session.send("exit")
+            self._session.expect(PROMPT)
 
         return cmd_output_uname
