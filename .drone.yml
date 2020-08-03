@@ -1,0 +1,58 @@
+---
+kind: pipeline
+name: default
+type: docker
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: epc_exporter_PR
+  image: plugins/docker
+  settings:
+    dry_run: true
+    registry: docker.io
+    repo: ciscocx/epc_exporter
+  when:
+    event:
+    - pull_request
+    ref:
+    - refs/heads/master
+    - refs/tags/*
+
+- name: epc_exporter
+  image: plugins/docker
+  settings:
+    auto_tag: true
+    registry: docker.io
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: ciscocx/epc_exporter
+  when:
+    event:
+    - tag
+    - push
+    ref:
+    - refs/heads/master
+    - refs/tags/*
+
+- name: send_notification
+  image: plugins/slack
+  settings:
+    channel: drone-ci
+    icon_url: https://raw.githubusercontent.com/drone/brand/master/logos/png/dark/drone-logo-png-dark-64.png
+    username: Drone CI
+    webhook:
+      from_secret: slack_webhook
+  when:
+    status:
+    - failure
+
+---
+kind: signature
+hmac: 5aae059ec7c4e4b64b0f43f18e5838ffde0385efdecb18912d8a1d76d8ec1146
+
+...
